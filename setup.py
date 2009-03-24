@@ -5,7 +5,7 @@ version = '0.1.0'
 
 setup(name='Products.SimpleGroupsManagement',
       version=version,
-      description="A Plone utility to make possible for non-manager users to handle groups and users",
+      description="A Plone utility to make possible for non-manager users to handle specific groups and users",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -15,9 +15,9 @@ setup(name='Products.SimpleGroupsManagement',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='plone users groups',
-      author='RedTurtle Technology',
+      author='keul',
       author_email='sviluppoplone@redturtle.net',
-      url='http://svn.plone.org/svn/plone/collective/Products.SimpleGroupsManagement',
+      url='http://svn.plone.org/svn/collective/Products.SimpleGroupsManagement/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
