@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="Products.SimpleGroupsManagement">
+
+      
+<body>
+
+<metal:main fill-slot="prefs_configlet_content"
+            tal:define="group view/load_group;
+			            members python:view.load_group_members(group);
+						portal_members view/load_portalmembers;">
+
+<div id="region-content" class="documentContent">
+
+	<h1 class="documentFirstHeading"
+	    tal:content="group/getId" />
+
+    <a href=""
+       class="link-parent"
+       tal:attributes="href string:$portal_url/@@simple_groups_management"
+       i18n:translate="sgm_label_back_to_gm">
+          Back to groups management
+    </a>
+
+	<h2 i18n:translate="">Members in the group</h2>
+
+	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete">
+		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
+		<table class="listing" summary="Manage users" tal:condition="members">
+			<tr><th></th><th>User</th></tr>
+			<tal:rows repeat="member members">
+				<tr tal:define="oddrow repeat/member/odd"
+				    tal:attributes="class python:(oddrow and 'odd') or 'even'">
+					<td><input class="noborder notify"
+					           type="checkbox" name="user_id:list"
+					           tal:attributes="value member/getId" /></td>
+					<td>
+						<img width="16" height="16" alt=""
+						     tal:attributes="src string:${context/absolute_url}/user.gif"/>
+						<span tal:replace="member/getId" />
+					</td>
+				</tr>
+			</tal:rows>
+		</table>
+		<input class="destructive" type="submit" name="delete_members" value="Delete selected"
+		       tal:condition="members"/>
+	</form>
+	<p tal:condition="not:members" i18n:translate="">No members</p>
+
+	<h2 i18n:translate="">Add more members</h2>
+
+	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add">
+		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
+		<table class="listing" summary="Add more members" tal:condition="portal_members">
+			<tr><th></th><th>User</th></tr>
+			<tal:rows repeat="member portal_members">
+				<tr tal:define="oddrow repeat/member/odd"
+				    tal:attributes="class python:(oddrow and 'odd') or 'even'">
+					<td><input class="noborder notify"
+					           type="checkbox" name="user_id:list"
+					           tal:attributes="value member/getId" /></td>
+					<td>
+						<img width="16" height="16" alt=""
+						     tal:attributes="src string:${context/absolute_url}/user.gif"/>
+						<span tal:replace="member/getId" />
+					</td>
+				</tr>
+			</tal:rows>
+		</table>
+		<input class="context" type="submit" name="add_members" value="Add selected"
+		       tal:condition="portal_members"/>
+	</form>
+	<p tal:condition="not:portal_members" i18n:translate="">No members in the portal</p>
+	
+	<div id="useradd"
+	     tal:condition="view/can_addusers">
+	    <h2 i18n:translate="">Add a new portal member</h2>	     	
+		<a tal:attributes="href string:$portal_url/join_form"
+		   i18n:translate="">Add a new user</a>
+	</div>
+
+</div>
+
+</metal:main>
+
+</body>
+</html>

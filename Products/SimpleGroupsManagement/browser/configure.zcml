@@ -1,0 +1,19 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="Products.SimpleGroupsManagement">
+
+    <browser:resource
+        name="groupevent.png"
+        file="groupevent.png"
+        />
+
+    <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="simple_groups_management"
+      class=".simple_groups_management.SimpleGroupsManagement"
+      permission="simple_groups_management.UseSimpleGroupsManagement"
+      allowed_attributes="add delete"
+      />
+
+</configure>

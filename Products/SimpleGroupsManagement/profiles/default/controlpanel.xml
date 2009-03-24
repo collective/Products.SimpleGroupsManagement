@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<object name="portal_controlpanel">
+
+ <configlet title="Groups management" action_id="GroupsManagement" appId="Products"
+    category="Member" condition_expr=""
+    url_expr="string:${portal_url}/@@simple_groups_management/" visible="True">
+  <permission>Use Simple Groups Management</permission>
+ </configlet>
+
+</object>

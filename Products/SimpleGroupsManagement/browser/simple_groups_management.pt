@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="Products.SimpleGroupsManagement">
+
+<body>
+
+<metal:main fill-slot="prefs_configlet_content"
+            tal:define="groups view/managable_groups">
+
+<div id="region-content" class="documentContent">
+
+	<h1 class="documentFirstHeading"
+        i18n:translate="smg_paneltitle">
+    		Groups management
+	</h1>
+
+    <p i18n:translate="smg_panelhelp">
+      From this page you can manage some groups of the portal, adding and removing users from them.
+    </p>
+
+	<h2 i18n:translate="smg_manageable_groups_title">
+    		Available groups
+	</h2>
+
+	<dl tal:condition="groups">
+		<dd tal:repeat="group groups">
+			<img width="16" height="16" alt=""
+			     tal:attributes="src string:${context/absolute_url}/group.gif"/>
+			<a tal:attributes="href string:${context/absolute_url}/@@simple_groups_management?group_id=${group}"
+			   tal:content="group" />
+		</dd>
+	</dl>
+	<p tal:condition="not:groups"
+	   i18n:translate="smg_no_groups">
+		You can't manage any groups
+	</p>
+
+</div>
+
+</metal:main>
+
+</body>
+</html>
