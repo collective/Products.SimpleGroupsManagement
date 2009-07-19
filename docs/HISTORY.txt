@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.0
+-----
+
+* Albert Pallàs provided internationalization support **and** catalan and spanish translations
+* Added italian translation.
+
 0.1.0
 -----
 

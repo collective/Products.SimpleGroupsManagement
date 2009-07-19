@@ -27,7 +27,7 @@
           Back to groups management
     </a>
 
-	<h2 i18n:translate="">Members in the group</h2>
+	<h2 i18n:translate="sgm_group_members">Members in the group</h2>
 
 	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete">
 		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
@@ -47,12 +47,12 @@
 				</tr>
 			</tal:rows>
 		</table>
-		<input class="destructive" type="submit" name="delete_members" value="Delete selected"
+		<input class="destructive" i18n:attributes="value" type="submit" name="delete_members" value="Delete selected"
 		       tal:condition="members"/>
 	</form>
-	<p tal:condition="not:members" i18n:translate="">No members</p>
+	<p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
 
-	<h2 i18n:translate="">Add more members</h2>
+	<h2 i18n:translate="sgm_add_members">Add more members</h2>
 
 	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add">
 		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
@@ -72,16 +72,16 @@
 				</tr>
 			</tal:rows>
 		</table>
-		<input class="context" type="submit" name="add_members" value="Add selected"
+		<input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
 		       tal:condition="portal_members"/>
 	</form>
-	<p tal:condition="not:portal_members" i18n:translate="">No members in the portal</p>
+	<p tal:condition="not:portal_members" i18n:translate="sgm_no_portal_members">No members in the portal</p>
 	
 	<div id="useradd"
 	     tal:condition="view/can_addusers">
-	    <h2 i18n:translate="">Add a new portal member</h2>	     	
+	    <h2 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h2>	     	
 		<a tal:attributes="href string:$portal_url/join_form"
-		   i18n:translate="">Add a new user</a>
+		   i18n:translate="sgm_add_new_user">Add a new user</a>
 	</div>
 
 </div>
