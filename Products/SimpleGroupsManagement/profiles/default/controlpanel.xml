@@ -2,7 +2,8 @@
 
 <object name="portal_controlpanel">
 
- <configlet title="Groups management" action_id="GroupsManagement" appId="Products"
+ <configlet title="Groups management" action_id="GroupsManagement"
+            appId="Products.SimpleGroupsManagement"
     category="Member" condition_expr=""
     url_expr="string:${portal_url}/@@simple_groups_management/" visible="True">
   <permission>Use Simple Groups Management</permission>

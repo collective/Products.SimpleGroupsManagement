@@ -45,3 +45,8 @@ Plone 2.5 support
 This product is done to work with the old Plone 2.5 release also. To use it, copy the *SimpleGroupsManagement*
 in your *Products* section.
 
+Credits
+-------
+
+Special thanks to Albert Pallàs for starting the internationalization and providing Spanish and Catalan.
+

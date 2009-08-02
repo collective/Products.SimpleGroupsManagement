@@ -1,0 +1,84 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-08-02 15:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Products.SimpleGroupsManagement\n"
+
+#. Default: "Add selected"
+#: ../browser/manage_group_template.pt:75
+msgid "Add selected"
+msgstr ""
+
+#. Default: "Delete selected"
+#: ../browser/manage_group_template.pt:50
+msgid "Delete selected"
+msgstr ""
+
+#. Default: "Add more members"
+#: ../browser/manage_group_template.pt:55
+msgid "sgm_add_members"
+msgstr ""
+
+#. Default: "Add a new portal member"
+#: ../browser/manage_group_template.pt:82
+msgid "sgm_add_new_portal_member"
+msgstr ""
+
+#. Default: "Add a new user"
+#: ../browser/manage_group_template.pt:83
+msgid "sgm_add_new_user"
+msgstr ""
+
+#. Default: "Members in the group"
+#: ../browser/manage_group_template.pt:30
+msgid "sgm_group_members"
+msgstr ""
+
+#. Default: "Back to groups management"
+#: ../browser/manage_group_template.pt:23
+msgid "sgm_label_back_to_gm"
+msgstr ""
+
+#. Default: "No members"
+#: ../browser/manage_group_template.pt:53
+msgid "sgm_no_members"
+msgstr ""
+
+#. Default: "No members in the portal"
+#: ../browser/manage_group_template.pt:78
+msgid "sgm_no_portal_members"
+msgstr ""
+
+#. Default: "Available groups"
+#: ../browser/simple_groups_management.pt:26
+msgid "smg_manageable_groups_title"
+msgstr ""
+
+#. Default: "You can't manage any groups"
+#: ../browser/simple_groups_management.pt:38
+msgid "smg_no_groups"
+msgstr ""
+
+#. Default: "From this page you can manage some groups of the portal, adding and removing users from them."
+#: ../browser/simple_groups_management.pt:22
+msgid "smg_panelhelp"
+msgstr ""
+
+#. Default: "Groups management"
+#: ../browser/simple_groups_management.pt:17
+msgid "smg_paneltitle"
+msgstr ""
+

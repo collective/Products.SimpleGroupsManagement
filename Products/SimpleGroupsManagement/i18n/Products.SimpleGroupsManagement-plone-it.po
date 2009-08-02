@@ -1,0 +1,22 @@
+# Italian translation
+# Luca Fabbri, 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-08-02 15:09+0000\n"
+"PO-Revision-Date: 2009-08-02 15:09+0000\n"
+"Last-Translator: Luca Fabbri <luca.fabbri[at]redturtle.net>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone[at]redturtle.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#. Default: "Groups management"
+msgid "Groups management"
+msgstr "Gestione dei gruppi"
+
