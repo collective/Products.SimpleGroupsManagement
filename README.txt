@@ -45,6 +45,12 @@ Plone 2.5 support
 This product is done to work with the old Plone 2.5 release also. To use it, copy the *SimpleGroupsManagement*
 in your *Products* section.
 
+TODO
+----
+
+By now the management form is well integrated with Plone 2.5 UI and more ugly on Plone3+.
+In future: drop Plone 2.5 support, or change this to be more pretty on Plone 3.
+
 Credits
 -------
 
