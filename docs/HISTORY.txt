@@ -4,7 +4,8 @@ Changelog
 0.2.0
 -----
 
-* Albert Pallàs provided internationalization support **and** catalan and spanish translations
+* Albert Pallas provided internationalization support
+* Again Albert added catalan, spanish and french translations.
 * Added italian translation.
 
 0.1.0

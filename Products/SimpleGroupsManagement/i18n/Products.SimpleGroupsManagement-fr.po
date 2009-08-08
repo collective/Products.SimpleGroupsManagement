@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2009-08-02 15:09+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Albert Pallàs <albert.pt@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Products.SimpleGroupsManagement\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
+#. Default: "Add selected"
+#: ../browser/manage_group_template.pt:75
+msgid "Add selected"
+msgstr "Ajouter sélectionné"
+
+#. <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
+#. Default: "Delete selected"
+#: ../browser/manage_group_template.pt:50
+msgid "Delete selected"
+msgstr "Supprimer sélectionné"
+
+#. Default: "Add more members"
+#: ../browser/manage_group_template.pt:55
+msgid "sgm_add_members"
+msgstr "Ajouter utilisateur"
+
+#. Default: "Add a new portal member"
+#: ../browser/manage_group_template.pt:82
+msgid "sgm_add_new_portal_member"
+msgstr "Ajouter un nouveau utilisateur au site"
+
+#. Default: "Add a new user"
+#: ../browser/manage_group_template.pt:83
+msgid "sgm_add_new_user"
+msgstr "Ajouter un nouveau utilisateur"
+
+#. Default: "Members in the group"
+#: ../browser/manage_group_template.pt:30
+msgid "sgm_group_members"
+msgstr "Utilisateurs du groupe"
+
+#. Default: "Back to groups management"
+#: ../browser/manage_group_template.pt:23
+msgid "sgm_label_back_to_gm"
+msgstr "Retourner à la Gestion des groupes"
+
+#. Default: "No members"
+#: ../browser/manage_group_template.pt:53
+msgid "sgm_no_members"
+msgstr "Aucun utilisateur"
+
+#. Default: "No members in the portal"
+#: ../browser/manage_group_template.pt:78
+msgid "sgm_no_portal_members"
+msgstr "Aucun utilisateur au site"
+
+#. Default: "Available groups"
+#: ../browser/simple_groups_management.pt:26
+msgid "smg_manageable_groups_title"
+msgstr "Groupes disponibles"
+
+#. Default: "You can't manage any groups"
+#: ../browser/simple_groups_management.pt:38
+msgid "smg_no_groups"
+msgstr "Aucun groupe peut être administré"
+
+#. Default: "From this page you can manage some groups of the portal, adding and removing users from them."
+#: ../browser/simple_groups_management.pt:22
+msgid "smg_panelhelp"
+msgstr "Dès cette page, on peut administrer quelques groupes du site, en y ajoutant et en y supprimant utilisateurs"
+
+#. Default: "Groups management"
+#: ../browser/simple_groups_management.pt:17
+msgid "smg_paneltitle"
+msgstr "Gestion des groupes"
+

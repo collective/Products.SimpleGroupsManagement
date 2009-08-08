@@ -6,10 +6,11 @@ Have you ever feel the need to give to normal (AKA non-manager) Plone member the
 Right now in Plone you can make this possible playin with the **Manage users** and **Manage Groups**
 permissions of the portal (also for Plone 2.5).
 
-What is (obviously) impossible is to limit the group on which a member can add.
+Even playing with those permissions is impossible is to limit the group on which a member (or group of members)
+can manage.
 
-This products make something very dangerous: with a minimal configuration a member of the Plone portal
-(or all members in a group) will be able to manage the users of a group overriding the portal security.
+This products make something very dangerous: with a minimal configuration, a member of the Plone portal
+(or all members in a group) will be able to manage the users of a group overriding the basic portal security.
 You only need to go to the *portal_properties* tool of you portal and modifiy the new
 **simple_groups_management_properties**.
 
@@ -21,7 +22,7 @@ In the *sgm_data* section you need to inser a set of strings like
     id2|group_id2
     ...
 
-where id1, id2 can be user or group ids. This mean that the member (or group) id1 will be able to act on the
+where *id1*, *id2* can be user or group ids. This mean that the member (or group) id1 will be able to act on the
 group_id1 members.
 
 You can also insert a list of groups ids that will be never handled by this product in the
@@ -45,15 +46,22 @@ Plone 2.5 support
 This product is done to work with the old Plone 2.5 release also. To use it, copy the *SimpleGroupsManagement*
 in your *Products* section.
 
+Similar product
+---------------
+
+Maybe is a good idea to check also `collective.groupdelegation`__
+
+__ http://pypi.python.org/pypi/collective.groupdelegation
+
 TODO
 ----
 
 * By now the management form is well integrated with Plone 2.5 UI and more ugly on Plone3+.
   In future: drop Plone 2.5 support, or change this to be more pretty on Plone 3.
 * Don't force the Manager to go in ZMI, but handle configuration from Plone UI.
+* Some portalMessage doesn't work correctly.
 
 Credits
 -------
 
-Special thanks to Albert Pallàs for starting the internationalization and providing Spanish and Catalan.
-
+Special thanks to Albert Pallas for beeing the locales-man.
