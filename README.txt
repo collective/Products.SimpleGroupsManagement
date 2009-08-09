@@ -14,7 +14,7 @@ This products make something very dangerous: with a minimal configuration, a mem
 You only need to go to the *portal_properties* tool of you portal and modifiy the new
 **simple_groups_management_properties**.
 
-In the *sgm_data* section you need to inser a set of strings like
+In the *sgm_data* section you need to insert a set of strings like
 
 ::
 
