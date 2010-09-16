@@ -18,5 +18,12 @@
       description="Make normal users able to manage groups"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  
+  <genericsetup:importStep
+	  name="Products.SimpleGroupsManagement"
+	  title="Simple Groups Management configuration"
+	  description="Configures simple groups management properties"
+	  handler="Products.SimpleGroupsManagement.exportimport.import_various"
+	  />
 
 </configure>
