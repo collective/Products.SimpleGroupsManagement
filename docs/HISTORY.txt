@@ -4,8 +4,9 @@ Changelog
 0.4.0-SVN_UNRELEASED
 -----
 
-* Moved tool-link from users preferences to plone_control_panel.
-* Created a link in site_actions to access the management view.
+* Moved tool-link from users preferences to plone_control_panel. [micecchi]
+* Created a link in site_actions to access the management view. [micecchi]
+* Created a custom event raised when an user is assignet to a group. [micecchi]
 
 0.3.0
 -----

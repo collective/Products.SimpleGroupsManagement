@@ -9,6 +9,9 @@ from Products.CMFCore import permissions
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from AccessControl import Unauthorized
 
+from Products.SimpleGroupsManagement.group_event import UserAddedToGroup
+from zope.event import notify
+
 class SimpleGroupsManagement(BrowserView):
     """Main view for manage groups od the Plone portal"""
 
@@ -111,6 +114,7 @@ class SimpleGroupsManagement(BrowserView):
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.addMember(user_id)
+            notify(UserAddedToGroup(group,user_id))
         plone_utils = getToolByName(self.context, 'plone_utils')
         plone_utils.addPortalMessage(u'Members added')
         self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id='+group_id)
