@@ -9,7 +9,7 @@ from Products.CMFCore import permissions
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from AccessControl import Unauthorized
 
-from Products.SimpleGroupsManagement.group_event import UserAddedToGroup
+from Products.SimpleGroupsManagement.group_event import UserAddedToGroup,UserRemovedFromGroup
 from zope.event import notify
 
 class SimpleGroupsManagement(BrowserView):
@@ -101,6 +101,7 @@ class SimpleGroupsManagement(BrowserView):
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.removeMember(user_id)
+            notify(UserRemovedFromGroup(group,user_id))
         plone_utils = getToolByName(self.context, 'plone_utils')
         plone_utils.addPortalMessage(u'Members removed')
         self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id='+group_id)
