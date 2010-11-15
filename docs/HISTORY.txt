@@ -1,17 +1,13 @@
 Changelog
 =========
 
-0.4.0-SVN_UNRELEASED
------
+0.3.0 (Unreleased)
+------------------
 
+* No more Plone 2.5 support.
 * Moved tool-link from users preferences to plone_control_panel. [micecchi]
 * Created a link in site_actions to access the management view. [micecchi]
 * Created a custom event raised when an user is assignet to a group. [micecchi]
-
-0.3.0
------
-
-* No more Plone 2.5 support.
 
 0.2.0
 -----
