@@ -31,6 +31,26 @@ class SimpleGroupsManagement(BrowserView):
             return self.manage_group_template()
         return self.main_template()
 
+    def check_groups_management_permission(self):
+        """Check the simple_groups_management_properties property sheets and find if the user can manage some groups
+        """
+        context = self.context
+        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        if member.has_permission(ManageGroups, context):
+            return True
+
+        my_groups = member.getGroups()
+        for line in self.sgm_data:
+            line = line.strip()
+            if line.find("|")==-1:
+                continue
+            id, group_id = line.split("|")
+            if id==member.getId() or id in my_groups:
+                group = self.acl_users.getGroup(group_id)
+                if group:
+                    return True
+        return False
+
     def load_group(self, group_id=None):
         """Load a group taking using its id"""
         if not group_id:

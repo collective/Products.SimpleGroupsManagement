@@ -8,7 +8,7 @@
    <property
       name="url_expr">string:${portal_url}/@@simple_groups_management</property>
    <property name="icon_expr"></property>
-   <property name="available_expr">python:portal.restrictedTraverse('@@check_groups_management_permission')()</property>
+   <property name="available_expr">portal/simple_groups_management/check_groups_management_permission</property>
    <property name="permissions">
     <element value="Use Simple Groups Management"/>
    </property>

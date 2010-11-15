@@ -13,13 +13,7 @@
       name="simple_groups_management"
       class=".simple_groups_management.SimpleGroupsManagement"
       permission="simple_groups_management.UseSimpleGroupsManagement"
-      allowed_attributes="add delete"
+      allowed_attributes="add delete check_groups_management_permission"
       />
 
-	<browser:page
-      for="*"
-      name="check_groups_management_permission"
-      class=".group_management_permission.CheckSimpleGroupsManagement"
-      permission="simple_groups_management.UseSimpleGroupsManagement"
-      />
 </configure>
