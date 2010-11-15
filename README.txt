@@ -40,12 +40,6 @@ This can create **security black-holes** in your portal!
 .. figure:: http://keul.it/images/Black_Hole_Milkyway.jpg
    :scale: 50
 
-Plone 2.5 support
------------------
-
-This product is done to work with the old Plone 2.5 release also. To use it, copy the *SimpleGroupsManagement*
-in your *Products* section.
-
 Similar product
 ---------------
 
