@@ -4,17 +4,18 @@ Changelog
 0.3.0 (Unreleased)
 ------------------
 
-* No more Plone 2.5 support.
-* Moved tool-link from users preferences to plone_control_panel. [micecchi]
-* Created a link in site_actions to access the management view. [micecchi]
-* Created a custom event raised when an user is assignet to a group. [micecchi]
+* No more Plone 2.5 support
+* Moved tool-link from users preferences to plone_control_panel [micecchi]
+* Created a link in site_actions to access the management view [micecchi]
+* Created a custom event raised when an user is assigned/deleted to a group
+  when using this product [micecchi]
 
 0.2.0
 -----
 
 * Albert Pallas provided internationalization support
-* Again Albert added catalan, spanish and french translations.
-* Added italian translation.
+* Again Albert added catalan, spanish and french translations
+* Added italian translation
 
 0.1.0
 -----
