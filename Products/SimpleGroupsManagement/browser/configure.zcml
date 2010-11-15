@@ -15,6 +15,7 @@
       permission="simple_groups_management.UseSimpleGroupsManagement"
       allowed_attributes="add delete"
       />
+
 	<browser:page
       for="*"
       name="check_groups_management_permission"

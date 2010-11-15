@@ -56,8 +56,6 @@ __ http://pypi.python.org/pypi/collective.groupdelegation
 TODO
 ----
 
-* By now the management form is well integrated with Plone 2.5 UI and more ugly on Plone3+.
-  In future: drop Plone 2.5 support, or change this to be more pretty on Plone 3.
 * Don't force the Manager to go in ZMI, but handle configuration from Plone UI.
 * Some portalMessage doesn't work correctly.
 

@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from Products.Five.browser import BrowserView
-#from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile # Plone 2.5 compatibility
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore import permissions
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from AccessControl import Unauthorized
 
-from Products.SimpleGroupsManagement.group_event import UserAddedToGroup,UserRemovedFromGroup
+from Products.SimpleGroupsManagement.group_event import UserAddedToGroup, UserRemovedFromGroup
 from zope.event import notify
 
 class SimpleGroupsManagement(BrowserView):
     """Main view for manage groups od the Plone portal"""
 
-    main_template = ZopeTwoPageTemplateFile("simple_groups_management.pt")
-    manage_group_template = ZopeTwoPageTemplateFile("manage_group_template.pt")
+    main_template = ViewPageTemplateFile("simple_groups_management.pt")
+    manage_group_template = ViewPageTemplateFile("manage_group_template.pt")
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)

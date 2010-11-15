@@ -5,7 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 
 class CheckSimpleGroupsManagement(BrowserView):
-    """View for chek if an user can manage some groups"""
+    """View for check if an user can manage some groups"""
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
