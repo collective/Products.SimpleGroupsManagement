@@ -19,7 +19,6 @@ class SimpleGroupsManagement(BrowserView):
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
-        request.set('disable_border', True)
         portal_properties = getToolByName(context, 'portal_properties')
         self.acl_users = getToolByName(context, 'acl_users')
         self.sgm_data = portal_properties['simple_groups_management_properties'].sgm_data

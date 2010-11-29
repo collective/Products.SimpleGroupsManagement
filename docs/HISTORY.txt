@@ -9,7 +9,7 @@ Changelog
 * Created a link in site_actions to access the management view [micecchi]
 * Created a custom event raised when an user is assigned/deleted to a group
   when using this product [micecchi]
-
+  
 0.2.0
 -----
 

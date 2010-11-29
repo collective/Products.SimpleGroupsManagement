@@ -7,6 +7,10 @@
       metal:use-macro="here/prefs_main_template/macros/master"
       i18n:domain="Products.SimpleGroupsManagement">
 
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
       
 <body>
 
