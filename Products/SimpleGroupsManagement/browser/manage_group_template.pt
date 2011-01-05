@@ -17,7 +17,9 @@
 <metal:main fill-slot="prefs_configlet_content"
             tal:define="group view/load_group;
 			            members python:view.load_group_members(group);
-						portal_members view/load_portalmembers;">
+						portal_members view/load_portalmembers;
+						Batch python:modules['Products.CMFPlone'].Batch;
+                 		b_size python:20;b_start python:0;b_start request/b_start | b_start;">
 
 <div id="region-content" class="documentContent">
 
@@ -58,26 +60,30 @@
 
 	<h2 i18n:translate="sgm_add_members">Add more members</h2>
 
-	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add">
+	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add"
+		  tal:condition="portal_members"
+		  tal:define="batch python:Batch(portal_members, b_size, int(b_start), orphan=1);">
 		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
-		<table class="listing" summary="Add more members" tal:condition="portal_members">
+		
+		<table class="listing" summary="Add more members">
 			<tr><th></th><th>User</th></tr>
-			<tal:rows repeat="member portal_members">
+			<tal:rows repeat="member batch">
 				<tr tal:define="oddrow repeat/member/odd"
 				    tal:attributes="class python:(oddrow and 'odd') or 'even'">
 					<td><input class="noborder notify"
 					           type="checkbox" name="user_id:list"
-					           tal:attributes="value member/getId" /></td>
+					           tal:attributes="value member/id" /></td>
 					<td>
 						<img width="16" height="16" alt=""
 						     tal:attributes="src string:${context/absolute_url}/user.gif"/>
-						<span tal:replace="member/getId" />
+						<span tal:replace="member/id" />
 					</td>
 				</tr>
 			</tal:rows>
 		</table>
 		<input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
 		       tal:condition="portal_members"/>
+	<div metal:use-macro="here/batch_macros/macros/navigation" />
 	</form>
 	<p tal:condition="not:portal_members" i18n:translate="sgm_no_portal_members">No members in the portal</p>
 	

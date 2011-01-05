@@ -85,8 +85,15 @@ class SimpleGroupsManagement(BrowserView):
 
     def load_portalmembers(self):
         """Return all members of the portal"""
-        return self.acl_users.getUsers()
-
+        pas_search=self.context.restrictedTraverse('@@pas_search')
+        list_users=[]
+        users=pas_search.searchUsers(sort_by='userid')
+        for user in users:
+            user_obj=self.acl_users.getUser(user.get('id',''))
+            if user_obj:
+                list_users.append(user)
+        return list_users
+    
     def _getSimpleGroupsManagementConfiguration(self):
         """Check the simple_groups_management_properties property sheets and find which groups
         the current users can manage.
