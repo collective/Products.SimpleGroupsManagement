@@ -87,7 +87,12 @@ class SimpleGroupsManagement(BrowserView):
         """Return all members of the portal"""
         pas_search=self.context.restrictedTraverse('@@pas_search')
         list_users=[]
-        users=pas_search.searchUsers(sort_by='userid')
+        if self.request.form.get('form.button.FindAll'):
+            users=pas_search.searchUsers(sort_by='userid')
+        elif self.request.form.get('form.button.Search') and self.request.form.get('searchstring'):
+            users=pas_search.searchUsers(sort_by='userid',fullname=self.request.form.get('searchstring'))
+        else:
+            return []
         for user in users:
             user_obj=self.acl_users.getUser(user.get('id',''))
             if user_obj:
