@@ -1,10 +1,10 @@
 Introduction
 ============
 
-Have you ever feel the need to give to normal (AKA non-manager) Plone member the power to manage a group?
+Have you ever feel the need to give to normal (AKA: not Manager/Site Administrator ) Plone member the power to
+manage a group?
 
-Right now in Plone you can make this possible playin with the **Manage users** and **Manage Groups**
-permissions of the portal (also for Plone 2.5).
+Right now in Plone you can make this possible playin with the **Manage users** and **Manage Groups**.
 
 Even playing with those permissions is impossible is to limit the group on which a member (or group of members)
 can manage.
@@ -34,11 +34,14 @@ you will be able to add new portal members (so no security break for this).
 Be aware!
 ---------
 
-This products override all normal Plone permissions noted above!
-This can create **security black-holes** in your portal!
+This products override all normal Plone permissions noted above! This can create **security black-holes** in
+your portal!
 
 .. figure:: http://keul.it/images/Black_Hole_Milkyway.jpg
    :scale: 50
+
+The access to the new user/group management form is protected by the **Use Simple Groups Management**
+permission (commonly given to all site Members).
 
 Similar product
 ---------------

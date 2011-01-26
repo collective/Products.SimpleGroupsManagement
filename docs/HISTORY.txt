@@ -5,11 +5,12 @@ Changelog
 ------------------
 
 * No more Plone 2.5 support
+* Plone UI updated to Plone 3 world [micecchi]
 * Moved tool-link from users preferences to plone_control_panel [micecchi]
 * Created a link in site_actions to access the management view [micecchi]
 * Created a custom event raised when an user is assigned/deleted to a group
   when using this product [micecchi]
-* Changed mode to listing users, to support ldap and many users [micecchi] 
+* Changed the way of listing users, to support ldap and many users [micecchi] 
   
 0.2.0
 -----

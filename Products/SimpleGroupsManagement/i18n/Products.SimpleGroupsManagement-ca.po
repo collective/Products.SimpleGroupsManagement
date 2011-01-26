@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2009-08-02 15:09+0000\n"
+"POT-Creation-Date: 2011-01-26 08:37+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Pallàs <albert.pt@gmail.com>\n"
 "Language-Team: \n"
@@ -19,68 +19,68 @@ msgstr ""
 
 #. <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
 #. Default: "Add selected"
-#: ../browser/manage_group_template.pt:75
+#: ../browser/manage_group_template.pt:119
 msgid "Add selected"
 msgstr "Afegir seleccionat"
 
 #. <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
 #. Default: "Delete selected"
-#: ../browser/manage_group_template.pt:50
+#: ../browser/manage_group_template.pt:56
 msgid "Delete selected"
 msgstr "Eliminar seleccionat"
 
 #. Default: "Add more members"
-#: ../browser/manage_group_template.pt:55
+#: ../browser/manage_group_template.pt:61
 msgid "sgm_add_members"
 msgstr "Afegir membres"
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:82
+#: ../browser/manage_group_template.pt:127
 msgid "sgm_add_new_portal_member"
 msgstr "Afegir un nou membre al portal"
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:83
+#: ../browser/manage_group_template.pt:128
 msgid "sgm_add_new_user"
 msgstr "Afegir un nou usuari"
 
 #. Default: "Members in the group"
-#: ../browser/manage_group_template.pt:30
+#: ../browser/manage_group_template.pt:36
 msgid "sgm_group_members"
 msgstr "Membres del grup"
 
 #. Default: "Back to groups management"
-#: ../browser/manage_group_template.pt:23
+#: ../browser/manage_group_template.pt:29
 msgid "sgm_label_back_to_gm"
 msgstr "Tornar a la Gestió de grups"
 
 #. Default: "No members"
-#: ../browser/manage_group_template.pt:53
+#: ../browser/manage_group_template.pt:59
 msgid "sgm_no_members"
 msgstr "Sense membres"
 
 #. Default: "No members in the portal"
-#: ../browser/manage_group_template.pt:78
+#: ../browser/manage_group_template.pt:123
 msgid "sgm_no_portal_members"
 msgstr "Cap membre al portal"
 
 #. Default: "Available groups"
-#: ../browser/simple_groups_management.pt:26
+#: ../browser/simple_groups_management.pt:30
 msgid "smg_manageable_groups_title"
 msgstr "Grups disponibles"
 
 #. Default: "You can't manage any groups"
-#: ../browser/simple_groups_management.pt:38
+#: ../browser/simple_groups_management.pt:42
 msgid "smg_no_groups"
 msgstr "No es pot administrar cap grup"
 
 #. Default: "From this page you can manage some groups of the portal, adding and removing users from them."
-#: ../browser/simple_groups_management.pt:22
+#: ../browser/simple_groups_management.pt:26
 msgid "smg_panelhelp"
 msgstr "Des d'aquesta pagina es pot administrar alguns grups del portal, afegint i eliminant usuaris dels mateixos."
 
 #. Default: "Groups management"
-#: ../browser/simple_groups_management.pt:17
+#: ../browser/simple_groups_management.pt:21
 msgid "smg_paneltitle"
 msgstr "Gestió de grups"
 

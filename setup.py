@@ -5,7 +5,7 @@ version = '0.3.0dev'
 
 setup(name='Products.SimpleGroupsManagement',
       version=version,
-      description="A Plone utility that make possible for non-manager users to manage some groups",
+      description="A Plone utility that make possible for non-Manager users to manage some (specific) groups",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -18,7 +18,7 @@ setup(name='Products.SimpleGroupsManagement',
       keywords='plone users groups acl',
       author='keul',
       author_email='sviluppoplone@redturtle.net',
-      url='http://svn.plone.org/svn/collective/Products.SimpleGroupsManagement/',
+      url='http://plone.org/products/simplegroupsmanagement',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
@@ -30,7 +30,5 @@ setup(name='Products.SimpleGroupsManagement',
       ],
       entry_points="""
       # -*- Entry points: -*-
-      [z3c.autoinclude.plugin]
-      target = plone
       """,
       )
