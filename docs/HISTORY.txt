@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3.0 (Unreleased)
+0.3.0dev1 (2011/04/05)
 ------------------
 
 * No more Plone 2.5 support
