@@ -31,6 +31,8 @@ You can also insert a list of groups ids that will be never handled by this prod
 The utility also react to the **Add portal members** permission. If the current user has this permission
 you will be able to add new portal members (so no security break for this).
 
+When an user is added to a group or removed, an event will be raised.
+
 Be aware!
 ---------
 
