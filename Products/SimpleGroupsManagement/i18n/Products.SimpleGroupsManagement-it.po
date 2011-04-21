@@ -74,7 +74,7 @@ msgstr "Non puoi gestire nessun gruppo"
 #. Default: "From this page you can manage some groups of the portal, adding and removing users from them."
 #: ../browser/simple_groups_management.pt:26
 msgid "smg_panelhelp"
-msgstr "Da questa pagina puoi gestire gruppi del portale, aggiungendo e rimuovendo da questi."
+msgstr "Da questa pagina puoi gestire gruppi del portale, aggiungendo e rimuovendo utenti da questi."
 
 #. Default: "Groups management"
 #: ../browser/simple_groups_management.pt:21
