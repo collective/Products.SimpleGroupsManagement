@@ -5,7 +5,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore import permissions
-from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
+try:
+    from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
+except ImportError:
+    from Products.PlonePAS.permissions import ManageGroups
+    
 from AccessControl import Unauthorized
 
 from Products.SimpleGroupsManagement.group_event import UserAddedToGroup, UserRemovedFromGroup
@@ -71,11 +75,11 @@ class SimpleGroupsManagement(BrowserView):
         context = self.context
         member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
-            manageable_groups = self.acl_users.getGroupIds()
+            manageable_groups = self.acl_users.searchGroups()
         else:
             manageable_groups = self._getSimpleGroupsManagementConfiguration()
         
-        return [x for x in manageable_groups if x not in self.never_used_groups]
+        return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
 
     def can_addusers(self):
         """Check if the current member can add news users"""

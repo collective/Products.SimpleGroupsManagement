@@ -2,7 +2,10 @@
 
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
+try:
+    from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
+except ImportError:
+    from Products.PlonePAS.permissions import ManageGroups
 
 class CheckSimpleGroupsManagement(BrowserView):
     """View for check if an user can manage some groups"""

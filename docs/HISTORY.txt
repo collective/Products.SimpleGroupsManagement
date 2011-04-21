@@ -11,6 +11,7 @@ Changelog
 * Created a custom event raised when an user is assigned/deleted to a group
   when using this product [micecchi]
 * Changed the way of listing users, to support ldap and many users [micecchi] 
+* improved Plone4 compatibility [micecchi]
   
 0.2.0
 -----
