@@ -76,10 +76,11 @@ class SimpleGroupsManagement(BrowserView):
         member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
             manageable_groups = self.acl_users.searchGroups()
+            return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
         else:
             manageable_groups = self._getSimpleGroupsManagementConfiguration()
+            return [x.getId() for x in manageable_groups if x.getId() not in self.never_used_groups]
         
-        return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
 
     def can_addusers(self):
         """Check if the current member can add news users"""
@@ -123,7 +124,7 @@ class SimpleGroupsManagement(BrowserView):
             if id==member.getId() or id in my_groups:
                 group = self.acl_users.getGroup(group_id)
                 if group:
-                    manageable_groups.append(group.getId())
+                    manageable_groups.append(group)
         return manageable_groups
 
     def delete(self):
