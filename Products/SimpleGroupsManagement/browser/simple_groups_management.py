@@ -59,7 +59,7 @@ class SimpleGroupsManagement(BrowserView):
         if not group_id:
             group_id = self.request.get("group_id")
         if group_id:
-            if group_id not in self.managable_groups():
+            if group_id not in self.manageableGroupIds():
                 raise Unauthorized()
             return self.acl_users.getGroupById(group_id)
         return None
@@ -69,18 +69,27 @@ class SimpleGroupsManagement(BrowserView):
         if group:
             return group.getGroupMembers()
         return []
-
-    def managable_groups(self):
+        
+    def manageable_groups(self):
         """Obtain a list of all groups that can be managed by the current user"""
         context = self.context
         member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        manageable_groups=[]
         if member.has_permission(ManageGroups, context):
             manageable_groups = self.acl_users.searchGroups()
-            return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
+#            return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
         else:
-            manageable_groups = self._getSimpleGroupsManagementConfiguration()
-            return [x.getId() for x in manageable_groups if x.getId() not in self.never_used_groups]
-        
+            group_objects = self._getSimpleGroupsManagementConfiguration()
+            ids_list= [x.getId() for x in group_objects]
+            manageable_groups = self.acl_users.searchGroups(id=ids_list)
+        return [x for x in manageable_groups if x.get('id') not in self.never_used_groups]
+    
+    def manageableGroupIds(self):
+        """
+        return a list of ids of manageable groups
+        """
+        manageable_groups=self.manageable_groups()
+        return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
 
     def can_addusers(self):
         """Check if the current member can add news users"""
@@ -130,7 +139,7 @@ class SimpleGroupsManagement(BrowserView):
     def delete(self):
         """Delete users from the group"""
         group_id = self.request.get("group_id")
-        if group_id not in self.managable_groups():
+        if group_id not in self.manageableGroupIds():
             raise Unauthorized()
         user_ids = self.request.get("user_id")
         group = self.acl_users.getGroup(group_id)
@@ -144,7 +153,7 @@ class SimpleGroupsManagement(BrowserView):
     def add(self):
         """Add users from the group"""
         group_id = self.request.get("group_id")
-        if group_id not in self.managable_groups():
+        if group_id not in self.manageableGroupIds():
             raise Unauthorized()
         user_ids = self.request.get("user_id")
         group = self.acl_users.getGroup(group_id)

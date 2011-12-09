@@ -24,7 +24,7 @@
 <div id="region-content" class="documentContent">
 
 	<h1 class="documentFirstHeading"
-	    tal:content="group/getId" />
+	    tal:content="group/getGroupTitleOrName" />
 
     <a href=""
        class="link-parent"
