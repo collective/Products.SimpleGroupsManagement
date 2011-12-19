@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3.2 (2011/12/??)
+0.3.2 (2011/12/19)
 ------------------
 
 * Added title of the group in groups listing [micecchi]
