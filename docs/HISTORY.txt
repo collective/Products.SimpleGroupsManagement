@@ -5,6 +5,15 @@ Changelog
 ------------------
 
 * Added support for the Site Administrator role [keul]
+* Moved action link to manage groups from portal_action to
+  user section (in the proper Plone 4 style way) [keul]
+* Added a proper uninstall procedure [keul]
+* Updated templated to Plone 4 [keul]
+* Added a project browserlayer [keul]
+* Added missing translation strings [keul]
+* HTML 5 fixes [keul]
+* Search also by userid [keul]
+* Fixed portal message problem [keul]
 
 0.3.2 (2011/12/19)
 ------------------

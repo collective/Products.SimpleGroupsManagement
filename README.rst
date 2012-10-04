@@ -33,8 +33,13 @@ you will be able to add new portal members (so no security break for this).
 
 When an user is added to a group or removed, an event will be raised.
 
+Compatibility
+-------------
+
+Tested with Plone 4.2. Look for older releases if you need Plone 3 compatiblity.
+
 Be aware!
----------
+=========
 
 This products override all normal Plone permissions noted above! This can create **security black-holes** in
 your portal!
@@ -45,20 +50,19 @@ your portal!
 The access to the new user/group management form is protected by the **Use Simple Groups Management**
 permission (commonly given to all site Members).
 
-Similar product
----------------
+Similar products
+================
 
 Maybe is a good idea to check also `collective.groupdelegation`__
 
 __ http://pypi.python.org/pypi/collective.groupdelegation
 
 TODO
-----
+====
 
 * Don't force the Manager to go in ZMI, but handle configuration from Plone UI.
-* Some portalMessage doesn't work correctly.
 
 Credits
--------
+=======
 
 Special thanks to Albert Pallas for beeing the locales-man.

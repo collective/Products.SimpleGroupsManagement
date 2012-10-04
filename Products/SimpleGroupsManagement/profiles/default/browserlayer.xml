@@ -1,0 +1,4 @@
+<layers>
+    <layer name="SimpleGroupsManagement"
+           interface="Products.SimpleGroupsManagement.interfaces.ISimpleGroupManagementLayer" />
+</layers>

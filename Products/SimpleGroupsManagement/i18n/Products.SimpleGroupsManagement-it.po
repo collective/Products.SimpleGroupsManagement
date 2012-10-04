@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-01-26 08:37+0000\n"
+"POT-Creation-Date: 2012-10-04 13:16+0000\n"
 "PO-Revision-Date: 2009-08-02 15:09+0000\n"
 "Last-Translator: Luca Fabbri <luca.fabbri[at]redturtle.net>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone[at]redturtle.net>\n"
@@ -17,27 +17,42 @@ msgstr ""
 "Domain: Products.SimpleGroupsManagement\n"
 
 #. Default: "Add selected"
-#: ../browser/manage_group_template.pt:119
+#: ../browser/manage_group_template.pt:126
 msgid "Add selected"
 msgstr "Aggiunti selezionati"
 
 #. Default: "Delete selected"
-#: ../browser/manage_group_template.pt:56
+#: ../browser/manage_group_template.pt:57
 msgid "Delete selected"
 msgstr "Elimina selezionati"
 
+msgid "Make normal users able to manage groups"
+msgstr "Rende gli utenti comuni in grado di gestire gruppi"
+
+#: ../browser/simple_groups_management.py:39
+msgid "Member(s) added"
+msgstr "Utente(i) aggiunto"
+
+#: ../browser/simple_groups_management.py:37
+msgid "Member(s) removed"
+msgstr "Utente(i) rimosso"
+
+#: ../browser/manage_group_template.pt:42
+msgid "User"
+msgstr "Utente"
+
 #. Default: "Add more members"
-#: ../browser/manage_group_template.pt:61
+#: ../browser/manage_group_template.pt:64
 msgid "sgm_add_members"
 msgstr "Aggiungi altri membri"
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:127
+#: ../browser/manage_group_template.pt:136
 msgid "sgm_add_new_portal_member"
 msgstr "Aggiungi nuovi membri del portale"
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:128
+#: ../browser/manage_group_template.pt:139
 msgid "sgm_add_new_user"
 msgstr "Aggiunge nuovo utente"
 
@@ -52,12 +67,12 @@ msgid "sgm_label_back_to_gm"
 msgstr "Ritorna alla gestione dei gruppi"
 
 #. Default: "No members"
-#: ../browser/manage_group_template.pt:59
+#: ../browser/manage_group_template.pt:62
 msgid "sgm_no_members"
 msgstr "Nessun membro"
 
 #. Default: "No members in the portal"
-#: ../browser/manage_group_template.pt:123
+#: ../browser/manage_group_template.pt:132
 msgid "sgm_no_portal_members"
 msgstr "Nessun membro nel portale"
 
@@ -67,7 +82,7 @@ msgid "smg_manageable_groups_title"
 msgstr "Gruppi disponibili"
 
 #. Default: "You can't manage any groups"
-#: ../browser/simple_groups_management.pt:42
+#: ../browser/simple_groups_management.pt:45
 msgid "smg_no_groups"
 msgstr "Non puoi gestire nessun gruppo"
 

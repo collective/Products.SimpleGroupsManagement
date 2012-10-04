@@ -5,6 +5,7 @@
   <!--property name="sgm_data" type="lines"/>
   <property name="sgm_never_managed_groups" type="lines">
 Administrators
+Site Administrators
 Reviewers
 AuthenticatedUsers
   </property-->

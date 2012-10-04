@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2011-01-26 08:37+0000\n"
+"POT-Creation-Date: 2012-10-04 13:16+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Pallàs <albert.pt@gmail.com>\n"
 "Language-Team: \n"
@@ -19,28 +19,43 @@ msgstr ""
 
 #. <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
 #. Default: "Add selected"
-#: ../browser/manage_group_template.pt:119
+#: ../browser/manage_group_template.pt:126
 msgid "Add selected"
 msgstr "Ajouter sélectionné"
 
 #. <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
 #. Default: "Delete selected"
-#: ../browser/manage_group_template.pt:56
+#: ../browser/manage_group_template.pt:57
 msgid "Delete selected"
 msgstr "Supprimer sélectionné"
 
+msgid "Make normal users able to manage groups"
+msgstr ""
+
+#: ../browser/simple_groups_management.py:39
+msgid "Member(s) added"
+msgstr ""
+
+#: ../browser/simple_groups_management.py:37
+msgid "Member(s) removed"
+msgstr ""
+
+#: ../browser/manage_group_template.pt:42
+msgid "User"
+msgstr ""
+
 #. Default: "Add more members"
-#: ../browser/manage_group_template.pt:61
+#: ../browser/manage_group_template.pt:64
 msgid "sgm_add_members"
 msgstr "Ajouter utilisateur"
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:127
+#: ../browser/manage_group_template.pt:136
 msgid "sgm_add_new_portal_member"
 msgstr "Ajouter un nouveau utilisateur au site"
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:128
+#: ../browser/manage_group_template.pt:139
 msgid "sgm_add_new_user"
 msgstr "Ajouter un nouveau utilisateur"
 
@@ -55,12 +70,12 @@ msgid "sgm_label_back_to_gm"
 msgstr "Retourner à la Gestion des groupes"
 
 #. Default: "No members"
-#: ../browser/manage_group_template.pt:59
+#: ../browser/manage_group_template.pt:62
 msgid "sgm_no_members"
 msgstr "Aucun utilisateur"
 
 #. Default: "No members in the portal"
-#: ../browser/manage_group_template.pt:123
+#: ../browser/manage_group_template.pt:132
 msgid "sgm_no_portal_members"
 msgstr "Aucun utilisateur au site"
 
@@ -70,7 +85,7 @@ msgid "smg_manageable_groups_title"
 msgstr "Groupes disponibles"
 
 #. Default: "You can't manage any groups"
-#: ../browser/simple_groups_management.pt:42
+#: ../browser/simple_groups_management.pt:45
 msgid "smg_no_groups"
 msgstr "Aucun groupe peut être administré"
 

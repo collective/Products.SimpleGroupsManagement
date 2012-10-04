@@ -14,6 +14,7 @@
       class=".simple_groups_management.SimpleGroupsManagement"
       permission="simple_groups_management.UseSimpleGroupsManagement"
       allowed_attributes="add delete check_groups_management_permission"
+	  layer="..interfaces.ISimpleGroupManagementLayer"
       />
 
 </configure>

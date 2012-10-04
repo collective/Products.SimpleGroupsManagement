@@ -16,15 +16,15 @@
 
 <metal:main fill-slot="prefs_configlet_content"
             tal:define="group view/load_group;
-			            members python:view.load_group_members(group);
-						portal_members view/load_portalmembers;
-						Batch python:modules['Products.CMFPlone'].Batch;
-                 		b_size python:20;b_start python:0;b_start request/b_start | b_start;">
+                        members python:view.load_group_members(group);
+                        portal_members view/load_portalmembers;
+                        Batch python:modules['Products.CMFPlone'].Batch;
+                        b_size python:20;b_start python:0;b_start request/b_start | b_start;">
 
-<div id="region-content" class="documentContent">
+<div id="content" class="documentContent">
 
-	<h1 class="documentFirstHeading"
-	    tal:content="group/getGroupTitleOrName" />
+    <h1 class="documentFirstHeading"
+        tal:content="group/getGroupTitleOrName" />
 
     <a href=""
        class="link-parent"
@@ -33,42 +33,50 @@
           Back to groups management
     </a>
 
-	<h2 i18n:translate="sgm_group_members">Members in the group</h2>
+    <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+        Portal status message
+    </div>
 
-	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete">
-		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
-		<table class="listing" summary="Manage users" tal:condition="members">
-			<tr><th></th><th>User</th></tr>
-			<tal:rows repeat="member members">
-				<tr tal:define="oddrow repeat/member/odd"
-				    tal:attributes="class python:(oddrow and 'odd') or 'even'">
-					<td><input class="noborder notify"
-					           type="checkbox" name="user_id:list"
-					           tal:attributes="value member/getId" /></td>
-					<td>
-						<img width="16" height="16" alt=""
-						     tal:attributes="src string:${context/absolute_url}/user.gif"/>
-						<span tal:replace="member/getId" />
-					</td>
-				</tr>
-			</tal:rows>
-		</table>
-		<input class="destructive" i18n:attributes="value" type="submit" name="delete_members" value="Delete selected"
-		       tal:condition="members"/>
-	</form>
-	<p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
+    <h2 i18n:translate="sgm_group_members">Members in the group</h2>
 
-	<h2 i18n:translate="sgm_add_members">Add more members</h2>
-    <div class="creamMemberSearchForm">
+    <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete">
+    	<fieldset>
+        <input name="group_id" tal:attributes="value group/getId" type="hidden" />
+        <table class="listing" tal:condition="members">
+            <tr><th></th><th i18n:translate="">User</th></tr>
+            <tal:rows repeat="member members">
+                <tr tal:define="oddrow repeat/member/odd"
+                    tal:attributes="class python:(oddrow and 'odd') or 'even'">
+                    <td><input class="noborder notify"
+                               type="checkbox" name="user_id:list"
+                               tal:attributes="value member/getId" /></td>
+                    <td>
+                        <img width="16" height="16" alt=""
+                             tal:attributes="src string:${context/absolute_url}/user.gif"/>
+                        <span tal:replace="member/getId" />
+                    </td>
+                </tr>
+            </tal:rows>
+        </table>
+        <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
+		       value="Delete selected"
+               tal:condition="members"/>
+    	</fieldset>
+    </form>
+    <p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
+
+    <h2 i18n:translate="sgm_add_members">Add more members</h2>
+    <div class="memberSearchForm">
         <form action=""
               name="member_search"
               method="get"
               tal:attributes="action string:$portal_url/@@simple_groups_management">
+    	      <fieldset>
               
               <input type="hidden" name="form.submitted" value="1" />
-			  <input type="hidden" name="group_id" value="1"
-			         tal:attributes="value request/group_id|nothing"/>
-			  
+              <input type="hidden" name="group_id" value="1"
+                     tal:attributes="value request/group_id|nothing"/>
+              
               <div i18n:domain="plone" class="searchMembersForm">
                     <div class="field searchFieldLeft">       
                         <input class="quickSearch"
@@ -78,7 +86,7 @@
                            tal:attributes="value request/searchstring|nothing"
                            />
                     </div>
-					<input type="submit"
+                    <input type="submit"
                            class="searchButton"
                            name="form.button.Search"
                            value="Search"
@@ -92,42 +100,52 @@
                            i18n:attributes="value label_showall;"
                            tal:condition="not:site_properties/many_users"
                            />
-			</div>
-		</form>
-	</div>
-	<form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add"
-		  tal:condition="portal_members"
-		  tal:define="batch python:Batch(portal_members, b_size, int(b_start), orphan=1);">
-		<input name="group_id" tal:attributes="value group/getId" type="hidden" />
-		
-		<table class="listing" summary="Add more members">
-			<tr><th></th><th>User</th></tr>
-			<tal:rows repeat="member batch">
-				<tr tal:define="oddrow repeat/member/odd"
-				    tal:attributes="class python:(oddrow and 'odd') or 'even'">
-					<td><input class="noborder notify"
-					           type="checkbox" name="user_id:list"
-					           tal:attributes="value member/id" /></td>
-					<td>
-						<img width="16" height="16" alt=""
-						     tal:attributes="src string:${context/absolute_url}/user.gif"/>
-						<span tal:replace="member/id" />
-					</td>
-				</tr>
-			</tal:rows>
-		</table>
-		<input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
-		       tal:condition="portal_members"/>
-	<div metal:use-macro="here/batch_macros/macros/navigation" />
-	</form>
-	<p tal:condition="python:not portal_members and request.form.get('form.submitted','')" i18n:translate="sgm_no_portal_members">No members in the portal</p>
-	
-	<div id="useradd"
-	     tal:condition="view/can_addusers">
-	    <h2 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h2>	     	
-		<a tal:attributes="href string:$portal_url/join_form"
-		   i18n:translate="sgm_add_new_user">Add a new user</a>
-	</div>
+              </div>
+    	      </fieldset>
+        </form>
+    </div>
+
+    <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add"
+          tal:condition="portal_members"
+          tal:define="batch python:Batch(portal_members, b_size, int(b_start), orphan=1);">
+    	<fieldset>
+        <input name="group_id" tal:attributes="value group/getId" type="hidden" />
+        
+        <table class="listing">
+            <tr><th></th><th i18n:translate="">User</th></tr>
+            <tal:rows repeat="member batch">
+                <tr tal:define="oddrow repeat/member/odd"
+                    tal:attributes="class python:(oddrow and 'odd') or 'even'">
+                    <td><input class="noborder notify"
+                               type="checkbox" name="user_id:list"
+                               tal:attributes="value member/id" /></td>
+                    <td>
+                        <img width="16" height="16" alt=""
+                             tal:attributes="src string:${context/absolute_url}/user.gif"/>
+                        <span tal:replace="member/id" />
+                    </td>
+                </tr>
+            </tal:rows>
+        </table>
+        <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
+               tal:condition="portal_members"/>
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+    </fieldset>
+    </form>
+
+    <p tal:condition="python:not portal_members and request.form.get('form.submitted','')" i18n:translate="sgm_no_portal_members">No members in the portal</p>
+    
+    <div id="useradd"
+         tal:condition="view/can_addusers">
+        <h2 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h2>
+        <form method="post" tal:attributes="action string:$portal_url/@@new-user">
+            <fieldset>
+            <input type="submit" value="Add a new user" name="form.button.AddUser"
+                   class="standalone add"
+                   i18n:attributes="value sgm_add_new_user" />
+            </fieldset>
+        </form>
+    </div>
 
 </div>
 

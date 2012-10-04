@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 
+from zope.event import notify
+
+from AccessControl import Unauthorized
+from Products.CMFCore.utils import getToolByName
+from Products.CMFCore import permissions
+
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
 
-from Products.CMFCore import permissions
 try:
     from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 except ImportError:
     from Products.PlonePAS.permissions import ManageGroups
-    
-from AccessControl import Unauthorized
 
+from Products.SimpleGroupsManagement import messageFactory as _
 from Products.SimpleGroupsManagement.group_event import UserAddedToGroup, UserRemovedFromGroup
-from zope.event import notify
 
 class SimpleGroupsManagement(BrowserView):
     """Main view for manage groups od the Plone portal"""
@@ -30,6 +32,11 @@ class SimpleGroupsManagement(BrowserView):
         
     def __call__(self):
         request = self.request
+        plone_utils = getToolByName(self.context, 'plone_utils')
+        if request.get('deleted'):
+            plone_utils.addPortalMessage(_('Member(s) removed'))
+        elif request.get('added'):
+            plone_utils.addPortalMessage(_(u'Member(s) added'))
         if self.request.get("group_id"):
             return self.manage_group_template()
         return self.main_template()
@@ -104,7 +111,10 @@ class SimpleGroupsManagement(BrowserView):
         if self.request.form.get('form.button.FindAll'):
             users=pas_search.searchUsers(sort_by='userid')
         elif self.request.form.get('form.button.Search') and self.request.form.get('searchstring'):
-            users=pas_search.searchUsers(sort_by='userid',fullname=self.request.form.get('searchstring'))
+            users=pas_search.searchUsers(sort_by='userid',
+                                         fullname=self.request.form.get('searchstring'),
+                                         id=self.request.form.get('searchstring'),
+                                         )
         else:
             return []
         for user in users:
@@ -146,9 +156,7 @@ class SimpleGroupsManagement(BrowserView):
         for user_id in user_ids:
             group.removeMember(user_id)
             notify(UserRemovedFromGroup(group,user_id))
-        plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(u'Members removed')
-        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id='+group_id)
+        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
 
     def add(self):
         """Add users from the group"""
@@ -159,9 +167,7 @@ class SimpleGroupsManagement(BrowserView):
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.addMember(user_id)
-            notify(UserAddedToGroup(group,user_id))
-        plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(u'Members added')
-        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id='+group_id)
+            notify(UserAddedToGroup(group,user_id))        
+        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id=%s&added=1' % group_id)
 
 

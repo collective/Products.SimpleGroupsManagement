@@ -1,0 +1,5 @@
+<layers>
+    <layer name="SimpleGroupsManagement"
+           interface="Products.SimpleGroupsManagement.interfaces.ISimpleGroupManagementLayer"
+		   remove="True" />
+</layers>
