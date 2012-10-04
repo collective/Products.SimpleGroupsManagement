@@ -4,6 +4,7 @@
   <permissions>
     <permission name="Use Simple Groups Management"
                 acquire="True">
+      <role name="Site Administrator"/>
       <role name="Member"/>
     </permission>
   </permissions>

@@ -7,6 +7,7 @@ from Products.CMFCore.utils import getToolByName
 _PROPERTIES = [
     dict(name='sgm_data', type_='lines', value=()),
     dict(name='sgm_never_managed_groups', type_='lines', value=('Administrators',
+                                                                'Site Administrators',
                                                                 'Reviewers',
                                                                 'AuthenticatedUsers'))
     ]
