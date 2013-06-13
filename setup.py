@@ -5,7 +5,7 @@ version = '0.4.1.dev0'
 
 setup(name='Products.SimpleGroupsManagement',
       version=version,
-      description="A Plone utility that make possible for non-Manager users to manage some (specific) groups",
+      description="A Plone utility that let non-Manager users able to manage some (specific) groups",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -15,7 +15,7 @@ setup(name='Products.SimpleGroupsManagement',
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Programming Language :: Python",
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='plone users groups acl',

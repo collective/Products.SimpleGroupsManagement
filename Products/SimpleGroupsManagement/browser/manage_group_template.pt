@@ -39,10 +39,12 @@
 
     <h2 i18n:translate="sgm_group_members">Members in the group</h2>
 
-    <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete">
-    	<fieldset>
+    <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/delete"
+          tal:condition="members">
+        <fieldset>
+        <legend i18n:translate="current_members_legend">Current members of the group</legend>
         <input name="group_id" tal:attributes="value group/getId" type="hidden" />
-        <table class="listing" tal:condition="members">
+        <table class="listing">
             <tr><th></th><th i18n:translate="">User</th></tr>
             <tal:rows repeat="member members">
                 <tr tal:define="oddrow repeat/member/odd"
@@ -52,16 +54,18 @@
                                tal:attributes="value member/getId" /></td>
                     <td>
                         <img width="16" height="16" alt=""
-                             tal:attributes="src string:${context/absolute_url}/user.gif"/>
-                        <span tal:replace="member/getId" />
+                             tal:attributes="src string:${context/absolute_url}/user.gif"/> 
+                        <span tal:define="fullname python:member.getProperty('fullname');
+						                  member_id member/getId;"
+                              tal:replace="python:(fullname or member_id) + (fullname and ' (' + member_id + ')' or '')" />
                     </td>
                 </tr>
             </tal:rows>
         </table>
         <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
-		       value="Delete selected"
+               value="Delete selected"
                tal:condition="members"/>
-    	</fieldset>
+        </fieldset>
     </form>
     <p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
 
@@ -71,7 +75,8 @@
               name="member_search"
               method="get"
               tal:attributes="action string:$portal_url/@@simple_groups_management">
-    	      <fieldset>
+              <fieldset>
+              <legend i18n:translate="add_members_legend">Add new members to that group</legend>
               
               <input type="hidden" name="form.submitted" value="1" />
               <input type="hidden" name="group_id" value="1"
@@ -101,14 +106,15 @@
                            tal:condition="not:site_properties/many_users"
                            />
               </div>
-    	      </fieldset>
+              </fieldset>
         </form>
     </div>
 
     <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add"
           tal:condition="portal_members"
           tal:define="batch python:Batch(portal_members, b_size, int(b_start), orphan=1);">
-    	<fieldset>
+        <fieldset>
+        <legend i18n:translate="add_selected_member_legend">Select which member(s) you want to add to the group</legend>
         <input name="group_id" tal:attributes="value group/getId" type="hidden" />
         
         <table class="listing">
@@ -122,7 +128,9 @@
                     <td>
                         <img width="16" height="16" alt=""
                              tal:attributes="src string:${context/absolute_url}/user.gif"/>
-                        <span tal:replace="member/id" />
+                        <span tal:define="fullname member/title|nothing;
+						                  member_id member/id;"
+                              tal:replace="python:(fullname or member_id) + (fullname and ' (' + member_id + ')' or '')" />
                     </td>
                 </tr>
             </tal:rows>
@@ -133,17 +141,18 @@
     </fieldset>
     </form>
 
-    <p tal:condition="python:not portal_members and request.form.get('form.submitted','')" i18n:translate="sgm_no_portal_members">No members in the portal</p>
+    <p tal:condition="python:not portal_members and request.form.get('form.submitted','')"
+	   i18n:translate="sgm_no_members_found">No members found</p>
     
     <div id="useradd"
          tal:condition="view/can_addusers">
         <h2 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h2>
         <form method="post" tal:attributes="action string:$portal_url/@@new-user">
-            <fieldset>
+            <div>
             <input type="submit" value="Add a new user" name="form.button.AddUser"
                    class="standalone add"
                    i18n:attributes="value sgm_add_new_user" />
-            </fieldset>
+            </div>
         </form>
     </div>
 

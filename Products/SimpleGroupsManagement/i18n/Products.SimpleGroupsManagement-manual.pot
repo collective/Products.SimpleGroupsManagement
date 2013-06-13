@@ -17,5 +17,5 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: Products.SimpleGroupsManagement\n"
 
-msgid "Make normal users able to manage groups"
+msgid "Let normal site members able to manage groups"
 msgstr ""

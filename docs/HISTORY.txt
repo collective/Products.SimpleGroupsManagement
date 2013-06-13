@@ -4,8 +4,8 @@ Changelog
 0.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fixed group management form format and labels [keul]
+- Show usernames [keul]
 
 0.4.0 (2012-10-04)
 ------------------
