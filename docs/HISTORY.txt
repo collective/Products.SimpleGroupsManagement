@@ -4,6 +4,8 @@ Changelog
 0.4.1 (unreleased)
 ------------------
 
+- Standardise markup as per https://dev.plone.org/ticket/10231 [davismr]
+- Fixed permission problem when user has empty list of groups [davismr]
 - Fixed group management form format and labels [keul]
 - Show usernames [keul]
 
