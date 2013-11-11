@@ -16,7 +16,7 @@
 <metal:main fill-slot="prefs_configlet_content"
             tal:define="groups view/manageable_groups">
 
-<div id="region-content" class="documentContent">
+<div id="content">
 
 	<h1 class="documentFirstHeading"
         i18n:translate="smg_paneltitle">

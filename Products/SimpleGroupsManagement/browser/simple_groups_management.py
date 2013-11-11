@@ -88,6 +88,8 @@ class SimpleGroupsManagement(BrowserView):
         else:
             group_objects = self._getSimpleGroupsManagementConfiguration()
             ids_list= [x.getId() for x in group_objects]
+            if ids_list == []:
+                return ids_list
             manageable_groups = self.acl_users.searchGroups(id=ids_list)
         return [x for x in manageable_groups if x.get('id') not in self.never_used_groups]
     
