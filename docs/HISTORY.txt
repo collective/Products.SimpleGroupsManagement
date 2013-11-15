@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.1 (unreleased)
+0.4.1 (2013-11-15)
 ------------------
 
 - Standardise markup as per https://dev.plone.org/ticket/10231 [davismr]
