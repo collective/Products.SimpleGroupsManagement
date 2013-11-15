@@ -15,7 +15,7 @@
       name="default"
       title="Simple Groups Management"
       directory="profiles/default"
-      description="Let normal users able to manage groups"
+      description="Let normal site members be able to manage groups"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <genericsetup:registerProfile

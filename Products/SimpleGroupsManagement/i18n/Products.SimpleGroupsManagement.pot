@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-13 19:26+0000\n"
+"POT-Creation-Date: 2013-11-15 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: Products.SimpleGroupsManagement\n"
 
-#: ../browser/manage_group_template.pt:135
+#: ../browser/manage_group_template.pt:138
 msgid "Add selected"
 msgstr ""
 
-#: ../browser/manage_group_template.pt:63
+#: ../browser/manage_group_template.pt:65
 msgid "Delete selected"
 msgstr ""
 
-msgid "Let normal site members able to manage groups"
+msgid "Let normal site members be able to manage groups"
 msgstr ""
 
 #: ../browser/simple_groups_management.py:39
@@ -41,12 +41,12 @@ msgid "User"
 msgstr ""
 
 #. Default: "Add new members to that group"
-#: ../browser/manage_group_template.pt:77
+#: ../browser/manage_group_template.pt:79
 msgid "add_members_legend"
 msgstr ""
 
 #. Default: "Select which member(s) you want to add to the group"
-#: ../browser/manage_group_template.pt:115
+#: ../browser/manage_group_template.pt:117
 msgid "add_selected_member_legend"
 msgstr ""
 
@@ -56,17 +56,17 @@ msgid "current_members_legend"
 msgstr ""
 
 #. Default: "Add more members"
-#: ../browser/manage_group_template.pt:70
+#: ../browser/manage_group_template.pt:72
 msgid "sgm_add_members"
 msgstr ""
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:146
+#: ../browser/manage_group_template.pt:149
 msgid "sgm_add_new_portal_member"
 msgstr ""
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:149
+#: ../browser/manage_group_template.pt:152
 msgid "sgm_add_new_user"
 msgstr ""
 
@@ -81,12 +81,12 @@ msgid "sgm_label_back_to_gm"
 msgstr ""
 
 #. Default: "No members"
-#: ../browser/manage_group_template.pt:68
+#: ../browser/manage_group_template.pt:70
 msgid "sgm_no_members"
 msgstr ""
 
 #. Default: "No members found"
-#: ../browser/manage_group_template.pt:141
+#: ../browser/manage_group_template.pt:144
 msgid "sgm_no_members_found"
 msgstr ""
 
