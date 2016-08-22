@@ -4,8 +4,10 @@ Changelog
 0.4.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fixed an issue that allow user management for groups with similar names
+  [keul]
+- Update load user code as Plone controlpanel do; this fix LDAP integration issue
+  [keul]
 
 0.4.1 (2013-11-15)
 ------------------
@@ -22,7 +24,7 @@ Changelog
 * Moved action link to manage groups from portal_action to
   user section (in the proper Plone 4 style way) [keul]
 * Added a proper uninstall procedure [keul]
-* Updated templated to Plone 4 [keul]
+* Updated templates to Plone 4 [keul]
 * Added a project browserlayer [keul]
 * Added missing translation strings [keul]
 * HTML 5 fixes [keul]
@@ -48,9 +50,9 @@ Changelog
 * Created a link in site_actions to access the management view [micecchi]
 * Created a custom event raised when an user is assigned/deleted to a group
   when using this product [micecchi]
-* Changed the way of listing users, to support ldap and many users [micecchi] 
-* Improved Plone4 compatibility [micecchi]
-  
+* Changed the way of listing users, to support ldap and many users [micecchi]
+* Improved Plone 4 compatibility [micecchi]
+
 0.2.0
 -----
 
@@ -62,4 +64,3 @@ Changelog
 -----
 
 * Initial release
-
