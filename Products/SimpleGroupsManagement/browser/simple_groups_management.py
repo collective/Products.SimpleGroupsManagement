@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from zope.event import notify
-
 from AccessControl import Unauthorized
-from Products.CMFCore.utils import getToolByName
+from Acquisition import aq_inner
+from itertools import chain
 from Products.CMFCore import permissions
-
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import normalizeString
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-try:
-    from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
-except ImportError:
-    from Products.PlonePAS.permissions import ManageGroups
-
+from Products.PlonePAS.permissions import ManageGroups
 from Products.SimpleGroupsManagement import messageFactory as _
-from Products.SimpleGroupsManagement.group_event import UserAddedToGroup, UserRemovedFromGroup
+from Products.SimpleGroupsManagement.group_event import UserAddedToGroup
+from Products.SimpleGroupsManagement.group_event import UserRemovedFromGroup
+from zope.component import getMultiAdapter
+from zope.event import notify
+
 
 class SimpleGroupsManagement(BrowserView):
     """Main view for manage groups od the Plone portal"""
@@ -27,9 +26,11 @@ class SimpleGroupsManagement(BrowserView):
         BrowserView.__init__(self, context, request)
         portal_properties = getToolByName(context, 'portal_properties')
         self.acl_users = getToolByName(context, 'acl_users')
-        self.sgm_data = portal_properties['simple_groups_management_properties'].sgm_data
-        self.never_used_groups = portal_properties['simple_groups_management_properties'].sgm_never_managed_groups
-        
+        self.sgm_data = portal_properties[
+            'simple_groups_management_properties'].sgm_data
+        self.never_used_groups = portal_properties[
+            'simple_groups_management_properties'].sgm_never_managed_groups
+
     def __call__(self):
         request = self.request
         plone_utils = getToolByName(self.context, 'plone_utils')
@@ -42,20 +43,23 @@ class SimpleGroupsManagement(BrowserView):
         return self.main_template()
 
     def check_groups_management_permission(self):
-        """Check the simple_groups_management_properties property sheets and find if the user can manage some groups
+        """
+        Check the simple_groups_management_properties property sheets and find
+        if the user can manage some groups
         """
         context = self.context
-        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        member = getToolByName(
+            context, 'portal_membership').getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
             return True
 
         my_groups = member.getGroups()
         for line in self.sgm_data:
             line = line.strip()
-            if line.find("|")==-1:
+            if line.find("|") == -1:
                 continue
             id, group_id = line.split("|")
-            if id==member.getId() or id in my_groups:
+            if id == member.getId() or id in my_groups:
                 group = self.acl_users.getGroup(group_id)
                 if group:
                     return True
@@ -76,55 +80,66 @@ class SimpleGroupsManagement(BrowserView):
         if group:
             return group.getGroupMembers()
         return []
-        
+
     def manageable_groups(self):
-        """Obtain a list of all groups that can be managed by the current user"""
+        """
+        Obtain a list of all groups that can be managed by the current user
+        """
         context = self.context
-        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
-        manageable_groups=[]
+        member = getToolByName(
+            context, 'portal_membership').getAuthenticatedMember()
+        manageable_groups = []
         if member.has_permission(ManageGroups, context):
             manageable_groups = self.acl_users.searchGroups()
-#            return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
         else:
             group_objects = self._getSimpleGroupsManagementConfiguration()
-            ids_list= [x.getId() for x in group_objects]
+            ids_list = [x.getId() for x in group_objects]
             if ids_list == []:
                 return ids_list
-            manageable_groups = self.acl_users.searchGroups(id=ids_list)
-        return [x for x in manageable_groups if x.get('id') not in self.never_used_groups]
-    
+            manageable_groups = self.acl_users.searchGroups(
+                exact_match=True,
+                id=ids_list
+            )
+        return [x for x in manageable_groups
+            if x.get('id') not in self.never_used_groups]
+
     def manageableGroupIds(self):
         """
         return a list of ids of manageable groups
         """
-        manageable_groups=self.manageable_groups()
-        return [x.get('id') for x in manageable_groups if x.get('id') not in self.never_used_groups]
+        manageable_groups = self.manageable_groups()
+        return [x.get('id') for x in manageable_groups
+            if x.get('id') not in self.never_used_groups]
 
     def can_addusers(self):
         """Check if the current member can add news users"""
         context = self.context
-        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        member = getToolByName(
+            context, 'portal_membership').getAuthenticatedMember()
         return member.has_permission(permissions.AddPortalMember, context)
 
-    def load_portalmembers(self):
+    def load_portalmembers(self, ignore=[]):
         """Return all members of the portal"""
-        pas_search=self.context.restrictedTraverse('@@pas_search')
-        list_users=[]
+        mtool = getToolByName(self.context, 'portal_membership')
+        searchString = self.request.form.get('searchstring')
+        searchView = getMultiAdapter(
+            (aq_inner(self.context), self.request), name='pas_search')
         if self.request.form.get('form.button.FindAll'):
-            users=pas_search.searchUsers(sort_by='userid')
-        elif self.request.form.get('form.button.Search') and self.request.form.get('searchstring'):
-            users=pas_search.searchUsers(sort_by='userid',
-                                         fullname=self.request.form.get('searchstring'),
-                                         id=self.request.form.get('searchstring'),
-                                         )
+            userResults = searchView.searchUsers(sort_by='userid')
+        elif self.request.form.get('form.button.Search') and searchString:
+            userResults = searchView.merge(
+                chain(
+                    *[searchView.searchUsers(**{field: searchString}) for field in ['login', 'fullname', 'email']]
+                ), 'userid'
+            )
         else:
             return []
-        for user in users:
-            user_obj=self.acl_users.getUser(user.get('id',''))
-            if user_obj:
-                list_users.append(user)
-        return list_users
-    
+        userResults = [mtool.getMemberById(u['id']) for u in userResults
+            if u['id'] not in ignore]
+        userResults.sort(key=lambda x: x is not None and x.getProperty(
+            'fullname') is not None and normalizeString(x.getProperty('fullname')) or '')
+        return userResults
+
     def _getSimpleGroupsManagementConfiguration(self):
         """Check the simple_groups_management_properties property sheets and find which groups
         the current users can manage.
@@ -135,14 +150,15 @@ class SimpleGroupsManagement(BrowserView):
         """
         context = self.context
         manageable_groups = []
-        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        member = getToolByName(
+            context, 'portal_membership').getAuthenticatedMember()
         my_groups = member.getGroups()
         for line in self.sgm_data:
             line = line.strip()
-            if line.find("|")==-1:
+            if line.find("|") == -1:
                 continue
             id, group_id = line.split("|")
-            if id==member.getId() or id in my_groups:
+            if id == member.getId() or id in my_groups:
                 group = self.acl_users.getGroup(group_id)
                 if group:
                     manageable_groups.append(group)
@@ -157,8 +173,9 @@ class SimpleGroupsManagement(BrowserView):
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.removeMember(user_id)
-            notify(UserRemovedFromGroup(group,user_id))
-        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
+            notify(UserRemovedFromGroup(group, user_id))
+        self.request.response.redirect(self.context.absolute_url(
+        ) + '/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
 
     def add(self):
         """Add users from the group"""
@@ -169,7 +186,6 @@ class SimpleGroupsManagement(BrowserView):
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.addMember(user_id)
-            notify(UserAddedToGroup(group,user_id))        
-        self.request.response.redirect(self.context.absolute_url()+'/@@simple_groups_management?group_id=%s&added=1' % group_id)
-
-
+            notify(UserAddedToGroup(group, user_id))
+        self.request.response.redirect(self.context.absolute_url(
+        ) + '/@@simple_groups_management?group_id=%s&added=1' % group_id)
