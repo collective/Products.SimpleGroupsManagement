@@ -35,7 +35,7 @@ Be aware!
 
 This products override all normal Plone permissions noted above! This can create **security black-holes** in your portal!
 
-.. figure:: http://keul.it/images/Black_Hole_Milkyway.jpg
+.. figure:: https://raw.githubusercontent.com/keul/Products.SimpleGroupsManagement/master/docs/Black_Hole_Milkyway.jpg
    :scale: 50
 
 The access to the new user/group management form is still protected by the *Use Simple Groups Management* permission (commonly given to all site Members).
