@@ -8,6 +8,9 @@ Changelog
   [keul]
 - Update load user code as Plone controlpanel do; this fix LDAP integration issue
   [keul]
+- Fix accents in spanish translations.
+  [cekk]
+
 
 0.4.1 (2013-11-15)
 ------------------
