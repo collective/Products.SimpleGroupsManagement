@@ -55,7 +55,7 @@ class SimpleGroupsManagement(BrowserView):
             # Plone 4 probably
             many_users = getToolByName(
                 self.context, 'portal_properties'
-            ).site_properties
+            ).site_properties.getProperty('many_users', False)
         return many_users
 
     def check_groups_management_permission(self):

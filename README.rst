@@ -35,6 +35,12 @@ Tested with Plone 4.3 and Plone 5. Look for older releases if you need Plone 3 c
 
    If you want to provide ones: you are welcome!
 
+TODO
+----
+
+The control panel integration user experience is a copy/paste from old ZMI portal_properties tool.
+I need a hero who can find time to fix it.
+
 Be aware!
 =========
 

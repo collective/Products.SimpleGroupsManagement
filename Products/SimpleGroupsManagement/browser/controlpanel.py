@@ -48,17 +48,10 @@ class SGMSettingsEditForm(controlpanel.RegistryEditForm):
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(),
                                                   self.control_panel_view))
 
-    # def updateWidgets(self):
-    #     super(SGMSettingsEditForm, self).updateWidgets()
-    #     fix_widget_style(self.widgets['general_code'])
-    #     fix_widget_style(self.widgets['general_header_code'])
-    #     for main_widget in self.widgets['error_specific_code'].widgets:
-    #         error_widgets = main_widget.subform.widgets
-    #         fix_widget_style(error_widgets['message_snippet'])
-    #     for main_widget in self.widgets['path_specific_code'].widgets:
-    #         path_widgets = main_widget.subform.widgets
-    #         path_widgets['path'].style = u'width: 100%'
-    #         fix_widget_style(path_widgets['path_snippet'])
+    def updateWidgets(self):
+        super(SGMSettingsEditForm, self).updateWidgets()
+        fix_widget_style(self.widgets['sgm_data'])
+        fix_widget_style(self.widgets['sgm_never_managed_groups'])
 
 
 class SGMSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
