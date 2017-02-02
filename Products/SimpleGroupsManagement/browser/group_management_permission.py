@@ -12,7 +12,6 @@ class CheckSimpleGroupsManagement(BrowserView):
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
-        portal_properties = getToolByName(context, 'portal_properties')
         self.acl_users = getToolByName(context, 'acl_users')
         self.sgm_data = api.portal.get_registry_record(
             'sgm_data', interface=ISimpleGroupManagementSettings

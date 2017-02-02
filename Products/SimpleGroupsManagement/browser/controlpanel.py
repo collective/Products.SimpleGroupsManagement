@@ -7,8 +7,6 @@ from Products.SimpleGroupsManagement import messageFactory as _
 from Products.SimpleGroupsManagement.interfaces import ISimpleGroupManagementSettings  # noqa
 from plone.app.registry.browser import controlpanel
 from z3c.form import button
-from z3c.form import field
-from z3c.form import group
 
 
 def fix_widget_style(widget):
