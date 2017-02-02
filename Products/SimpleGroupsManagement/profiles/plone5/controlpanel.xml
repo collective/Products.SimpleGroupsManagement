@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
-
-<object name="portal_controlpanel">
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="Products.SimpleGroupsManagement">
 
  <configlet title="Groups management proxy settings" action_id="GroupsManagement"
             appId="Products.SimpleGroupsManagement"
-    category="plone-users" condition_expr=""
-    url_expr="string:${portal_url}/@@configure-simple-groups-management"
-	visible="True">
+            category="plone-users" condition_expr=""
+            url_expr="string:${portal_url}/@@configure-simple-groups-management"
+	          visible="True"
+            i18n:attributes="title">
   <permission>Manage Simple Groups Management</permission>
  </configlet>
 

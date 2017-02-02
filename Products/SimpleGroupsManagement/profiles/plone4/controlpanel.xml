@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="Products.SimpleGroupsManagement">
 
-<object name="portal_controlpanel">
-
- <configlet title="Groups management" action_id="GroupsManagement"
+ <configlet title="Groups management proxy settings" action_id="GroupsManagement"
             appId="Products.SimpleGroupsManagement"
-    category="Products" condition_expr=""
-    url_expr="string:${portal_url}/@@simple_groups_management/"
-	icon_expr="string:${portal_url}/++resource++groupevent.png"
-	visible="True">
+            category="Products" condition_expr=""
+            url_expr="string:${portal_url}/@@configure-simple-groups-management"
+	          icon_expr="string:${portal_url}/++resource++groupevent.png"
+	          visible="True"
+            i18n:attributes="title">
   <permission>Use Simple Groups Management</permission>
  </configlet>
 
