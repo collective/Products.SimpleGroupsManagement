@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<object name="portal_controlpanel">
+
+ <configlet title="Groups management proxy settings" action_id="GroupsManagement"
+            appId="Products.SimpleGroupsManagement"
+    category="plone-users" condition_expr=""
+    url_expr="string:${portal_url}/@@configure-simple-groups-management"
+	visible="True">
+  <permission>Manage Simple Groups Management</permission>
+ </configlet>
+
+</object>

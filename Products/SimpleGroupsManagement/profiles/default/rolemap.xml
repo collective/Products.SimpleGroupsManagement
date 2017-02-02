@@ -7,6 +7,12 @@
       <role name="Site Administrator"/>
       <role name="Member"/>
     </permission>
+
+    <permission name="Manage Simple Groups Management"
+                acquire="False">
+      <role name="Site Administrator"/>
+      <role name="Manager"/>
+    </permission>
   </permissions>
 
 </rolemap>

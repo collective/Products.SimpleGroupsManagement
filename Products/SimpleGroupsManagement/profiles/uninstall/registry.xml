@@ -1,0 +1,8 @@
+<registry>
+    <record interface="Products.SimpleGroupsManagement.interfaces.ISimpleGroupManagementSettings"
+            field="sgm_data"
+            delete="True"/>
+    <record interface="Products.SimpleGroupsManagement.interfaces.ISimpleGroupManagementSettings"
+            field="sgm_never_managed_groups"
+            delete="True"/>
+</registry>

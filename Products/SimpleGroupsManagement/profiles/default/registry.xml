@@ -1,0 +1,3 @@
+<registry>
+    <records interface="Products.SimpleGroupsManagement.interfaces.ISimpleGroupManagementSettings" />
+</registry>

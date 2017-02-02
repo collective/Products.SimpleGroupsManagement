@@ -1,9 +1,17 @@
 Changelog
 =========
 
-0.4.2 (unreleased)
+0.5.0 (unreleased)
 ------------------
 
+Plone 5 compatibility
+
+- Moved i18n to locales (some translation has been lost due to strange encoding issues)
+  [keul]
+- Added a configuration registry panel and moved to plone.app.registry
+  [keul]
+- Fixed form GET to POST
+  [keul]
 - Fixed an issue that allow user management for groups with similar names
   [keul]
 - Update load user code as Plone controlpanel do; this fix LDAP integration issue

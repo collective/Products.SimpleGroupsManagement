@@ -2,7 +2,6 @@
 
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
-from itertools import chain
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import normalizeString
@@ -12,12 +11,16 @@ from Products.PlonePAS.permissions import ManageGroups
 from Products.SimpleGroupsManagement import messageFactory as _
 from Products.SimpleGroupsManagement.group_event import UserAddedToGroup
 from Products.SimpleGroupsManagement.group_event import UserRemovedFromGroup
+from itertools import chain
+from plone import api
+from plone.api.exc import InvalidParameterError
 from zope.component import getMultiAdapter
 from zope.event import notify
+from ..interfaces import ISimpleGroupManagementSettings
 
 
 class SimpleGroupsManagement(BrowserView):
-    """Main view for manage groups od the Plone portal"""
+    """Main view for manage groups in the Plone portal"""
 
     main_template = ViewPageTemplateFile("simple_groups_management.pt")
     manage_group_template = ViewPageTemplateFile("manage_group_template.pt")
@@ -26,10 +29,12 @@ class SimpleGroupsManagement(BrowserView):
         BrowserView.__init__(self, context, request)
         portal_properties = getToolByName(context, 'portal_properties')
         self.acl_users = getToolByName(context, 'acl_users')
-        self.sgm_data = portal_properties[
-            'simple_groups_management_properties'].sgm_data
-        self.never_used_groups = portal_properties[
-            'simple_groups_management_properties'].sgm_never_managed_groups
+        self.sgm_data = api.portal.get_registry_record(
+            'sgm_data', interface=ISimpleGroupManagementSettings
+        )
+        self.never_used_groups = api.portal.get_registry_record(
+            'sgm_never_managed_groups', interface=ISimpleGroupManagementSettings
+        )
 
     def __call__(self):
         request = self.request
@@ -42,6 +47,17 @@ class SimpleGroupsManagement(BrowserView):
             return self.manage_group_template()
         return self.main_template()
 
+    @property
+    def many_users(self):
+        try:
+            many_users = api.portal.get_registry_record('plone.many_users')
+        except InvalidParameterError:
+            # Plone 4 probably
+            many_users = getToolByName(
+                self.context, 'portal_properties'
+            ).site_properties
+        return many_users
+
     def check_groups_management_permission(self):
         """
         Check the simple_groups_management_properties property sheets and find
@@ -49,7 +65,8 @@ class SimpleGroupsManagement(BrowserView):
         """
         context = self.context
         member = getToolByName(
-            context, 'portal_membership').getAuthenticatedMember()
+            context, 'portal_membership'
+        ).getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
             return True
 
@@ -101,7 +118,7 @@ class SimpleGroupsManagement(BrowserView):
                 id=ids_list
             )
         return [x for x in manageable_groups
-            if x.get('id') not in self.never_used_groups]
+                if x.get('id') not in self.never_used_groups]
 
     def manageableGroupIds(self):
         """
@@ -109,7 +126,7 @@ class SimpleGroupsManagement(BrowserView):
         """
         manageable_groups = self.manageable_groups()
         return [x.get('id') for x in manageable_groups
-            if x.get('id') not in self.never_used_groups]
+                if x.get('id') not in self.never_used_groups]
 
     def can_addusers(self):
         """Check if the current member can add news users"""
@@ -129,20 +146,24 @@ class SimpleGroupsManagement(BrowserView):
         elif self.request.form.get('form.button.Search') and searchString:
             userResults = searchView.merge(
                 chain(
-                    *[searchView.searchUsers(**{field: searchString}) for field in ['login', 'fullname', 'email']]
+                    *[searchView.searchUsers(
+                        **{field: searchString}
+                    ) for field in ['login', 'fullname', 'email']]
                 ), 'userid'
             )
         else:
             return []
         userResults = [mtool.getMemberById(u['id']) for u in userResults
-            if u['id'] not in ignore]
+                       if u['id'] not in ignore]
         userResults.sort(key=lambda x: x is not None and x.getProperty(
-            'fullname') is not None and normalizeString(x.getProperty('fullname')) or '')
+            'fullname') is not None and normalizeString(
+                x.getProperty('fullname')
+            ) or '')
         return userResults
 
     def _getSimpleGroupsManagementConfiguration(self):
-        """Check the simple_groups_management_properties property sheets and find which groups
-        the current users can manage.
+        """
+        Check the SGM settings and find which groups the current user can manage
         Every line of the simple_groups_management_properties.sgm_data can be:
         mygroup_id|group_id
         ...or...
@@ -174,8 +195,9 @@ class SimpleGroupsManagement(BrowserView):
         for user_id in user_ids:
             group.removeMember(user_id)
             notify(UserRemovedFromGroup(group, user_id))
-        self.request.response.redirect(self.context.absolute_url(
-        ) + '/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
+        self.request.response.redirect(
+            self.context.absolute_url() +
+            '/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
 
     def add(self):
         """Add users from the group"""
@@ -187,5 +209,6 @@ class SimpleGroupsManagement(BrowserView):
         for user_id in user_ids:
             group.addMember(user_id)
             notify(UserAddedToGroup(group, user_id))
-        self.request.response.redirect(self.context.absolute_url(
-        ) + '/@@simple_groups_management?group_id=%s&added=1' % group_id)
+        self.request.response.redirect(
+            self.context.absolute_url() +
+            '/@@simple_groups_management?group_id=%s&added=1' % group_id)

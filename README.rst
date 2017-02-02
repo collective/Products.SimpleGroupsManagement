@@ -1,15 +1,15 @@
 Introduction
 ============
 
-Have you ever feel the need to give to normal (AKA: not Manager/Site Administrator ) Plone member the power to manage a group?
+Have you ever feel the need to give to normal (AKA: not Manager/Site Administrator) Plone member the power to manage a group?
 
 Right now in Plone you can make this playing with the (**Plone Site Setup: Users and Groups**).
 Even playing with this permission is impossible to limit the group on which a member (or group) can manage.
 
-This products and a minimal configuration, a member of the Plone portal (or all members in a group) will be able to manage the users of a group, overriding the basic portal security.
-You only need to go to the ``portal_properties`` tool of you portal and modifiy the new **simple_groups_management_properties**.
+This product adds a minimal configuration, a member of the site (or all members in a group) will be able to manage which users are part of a group.
 
-In the ``sgm_data`` section you need to insert a set of strings like
+You only need to go to the "*Groups management proxy settings*" settings panel.
+You need to insert a set of strings like
 
 ::
 
@@ -17,9 +17,8 @@ In the ``sgm_data`` section you need to insert a set of strings like
     id2|group_id2
     ...
 
-where *id1*, *id2* can be user or group ids. This mean that those subjects will be able to act on groups.
-
-You can also insert a list of groups ids that will be never handled by this product in the ``sgm_never_managed_groups`` section.
+where *id1*, *id2* can be user or group ids.
+This mean that those subjects will be able to act on groups.
 
 The utility also react to the **Add portal members** permission. If the current user has this permission you will be able to add new portal members (so no security break for this).
 
@@ -28,7 +27,13 @@ When an user is added or removed, an event is notified.
 Compatibility
 -------------
 
-Tested with Plone 4.1, 4.2 and 4.3. Look for older releases if you need Plone 3 compatiblity.
+Tested with Plone 4.3 and Plone 5. Look for older releases if you need Plone 3 compatibility.
+
+.. note::
+   Right now we have **no migration** from old ( < 0.5) versions to version 0.5.
+   You must manually copy/paste configuration from old portal_properties tool the new registry settings.
+
+   If you want to provide ones: you are welcome!
 
 Be aware!
 =========
@@ -40,14 +45,7 @@ This products override all normal Plone permissions noted above! This can create
 
 The access to the new user/group management form is still protected by the *Use Simple Groups Management* permission (commonly given to all site Members).
 
-TODO
-====
-
-* Don't force the Manager to go in ZMI, but handle configuration from Plone UI.
-* Plone 5 compatibility still not there.
-* i18n machinery must be moved to locales
-
 Credits
 =======
 
-Special thanks to Albert Pallas for beeing the locales-man.
+Special thanks to Albert Pallas for being the locales-man.

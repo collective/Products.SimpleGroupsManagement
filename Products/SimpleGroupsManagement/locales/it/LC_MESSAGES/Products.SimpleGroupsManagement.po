@@ -3,10 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-11-15 13:01+0000\n"
+"POT-Creation-Date: 2017-02-02 11:30+0000\n"
 "PO-Revision-Date: 2009-08-02 15:09+0000\n"
-"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
-"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"Last-Translator: Luca Fabbri <luca@keul.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,21 +20,41 @@ msgstr ""
 msgid "Add selected"
 msgstr "Aggiunti selezionati"
 
+#: ../browser/controlpanel.py:38
+msgid "Changes saved"
+msgstr "Modifiche salvate"
+
 #. Default: "Delete selected"
 #: ../browser/manage_group_template.pt:65
 msgid "Delete selected"
 msgstr "Elimina selezionati"
 
+#: ../browser/controlpanel.py:46
+msgid "Edit cancelled"
+msgstr "Modifiche annullate"
+
+#: ../interfaces.py:18
+msgid "Groups management proxy"
+msgstr "Delega di gestione gruppi"
+
+#: ../browser/controlpanel.py:25
+msgid "Groups management proxy settings"
+msgstr "Impostazioni della delega di gestione gruppi"
+
 msgid "Let normal site members be able to manage groups"
 msgstr "Rende comuni utenti del sito in grado di gestire i gruppi"
 
-#: ../browser/simple_groups_management.py:39
+#: ../browser/simple_groups_management.py:45
 msgid "Member(s) added"
 msgstr "Utente(i) aggiunto"
 
-#: ../browser/simple_groups_management.py:37
+#: ../browser/simple_groups_management.py:43
 msgid "Member(s) removed"
 msgstr "Utente(i) rimosso"
+
+#: ../interfaces.py:34
+msgid "Not manageable groups"
+msgstr "Gruppi non gestibili"
 
 #: ../browser/manage_group_template.pt:48
 msgid "User"
@@ -55,6 +74,24 @@ msgstr "Seleziona quale utente(i) vuoi aggiungere al gruppo"
 #: ../browser/manage_group_template.pt:45
 msgid "current_members_legend"
 msgstr "Membri correnti del gruppo"
+
+#. Default: "Put here a list of groups that can't be managed by users"
+#: ../interfaces.py:35
+msgid "help_gm_never_managed_groups"
+msgstr "Inserisci una lista di gruppi che non possono essere gestiti dagli utenti"
+
+#. Default: "Configure which users or groups can manage which groups.\nFill the field below by providing a set of \"user_foo_id|group_bar_id\" (or \"group_foo_id|group_bar_id\"), one per line.\nThat means: the user/group on the left of the \"|\" can handle group on the right."
+#: ../interfaces.py:19
+msgid "help_sgm_data"
+msgstr ""
+"Configura quale utente o gruppo può gestire quale gruppo.\n"
+"Compila il campo sottostante fornendo una lista di valori \"utente_a_id|gruppo_b_id\" (o \"gruppo_a_id|gruppo_b_id\"), uno per riga.\n"
+"Questo significa: l'utente/gruppo alla sinistra del \"|\" può gestire il gruppo sulla destra."
+
+#. Default: "Configure groups management proxy"
+#: ../browser/controlpanel.py:26
+msgid "help_sgm_settings_editform"
+msgstr "Configurazione delega di gestione gruppi"
 
 #. Default: "Add more members"
 #: ../browser/manage_group_template.pt:72
@@ -110,4 +147,3 @@ msgstr "Da questa pagina puoi gestire gruppi del portale, aggiungendo e rimuoven
 #: ../browser/simple_groups_management.pt:21
 msgid "smg_paneltitle"
 msgstr "Gestione dei gruppi"
-

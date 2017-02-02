@@ -17,7 +17,8 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-#. Default: "Groups management"
 msgid "Groups management"
 msgstr ""
 
+msgid "Let normal site members be able to manage groups"
+msgstr ""

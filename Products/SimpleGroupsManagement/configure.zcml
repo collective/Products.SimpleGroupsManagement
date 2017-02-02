@@ -2,22 +2,47 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="Products.SimpleGroupsManagement">
+
+  <i18n:registerTranslations directory="locales" />
 
   <permission
         id="simple_groups_management.UseSimpleGroupsManagement"
         title="Use Simple Groups Management"
      />
+  <permission
+        id="simple_groups_management.ManageSimpleGroupsManagement"
+        title="Manage Simple Groups Management"
+     />
 
   <include package=".browser" />
 
   <genericsetup:registerProfile
-      name="default"
+      name="groupsmanagement"
       title="Simple Groups Management"
       directory="profiles/default"
       description="Let normal site members be able to manage groups"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <genericsetup:registerProfile
+      name="default"
+      title="Simple Groups Management"
+      directory="profiles/plone4"
+      description="Let normal site members be able to manage groups"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      zcml:condition="not-have plone-5"
+      />
+  <genericsetup:registerProfile
+      name="default"
+      title="Simple Groups Management"
+      directory="profiles/plone5"
+      description="Let normal site members be able to manage groups"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      zcml:condition="have plone-5"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Simple Groups Management: uninstall"
@@ -25,12 +50,5 @@
       description="Remove Simple Groups Management from your site"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
-  <genericsetup:importStep
-	  name="Products.SimpleGroupsManagement"
-	  title="Simple Groups Management configuration"
-	  description="Configures simple groups management properties"
-	  handler="Products.SimpleGroupsManagement.exportimport.import_various"
-	  />
 
 </configure>

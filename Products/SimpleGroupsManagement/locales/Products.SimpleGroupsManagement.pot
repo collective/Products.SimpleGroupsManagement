@@ -1,43 +1,59 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2013-11-15 13:01+0000\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Albert Pallàs <albert.pt@gmail.com>\n"
-"Language-Team: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-02-02 11:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: fr\n"
-"Language-Name: French\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: Products.SimpleGroupsManagement\n"
-"X-Poedit-Language: French\n"
-"X-Poedit-Country: FRANCE\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
-#. <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
-#. Default: "Add selected"
 #: ../browser/manage_group_template.pt:138
 msgid "Add selected"
-msgstr "Ajouter sélectionné"
+msgstr ""
 
-#. <input class="destructive" i18n:attributes="value" type="submit" name="delete_members"
-#. Default: "Delete selected"
+#: ../browser/controlpanel.py:38
+msgid "Changes saved"
+msgstr ""
+
 #: ../browser/manage_group_template.pt:65
 msgid "Delete selected"
-msgstr "Supprimer sélectionné"
+msgstr ""
+
+#: ../browser/controlpanel.py:46
+msgid "Edit cancelled"
+msgstr ""
+
+#: ../interfaces.py:18
+msgid "Groups management proxy"
+msgstr ""
+
+#: ../browser/controlpanel.py:25
+msgid "Groups management proxy settings"
+msgstr ""
 
 msgid "Let normal site members be able to manage groups"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:39
+#: ../browser/simple_groups_management.py:45
 msgid "Member(s) added"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:37
+#: ../browser/simple_groups_management.py:43
 msgid "Member(s) removed"
+msgstr ""
+
+#: ../interfaces.py:34
+msgid "Not manageable groups"
 msgstr ""
 
 #: ../browser/manage_group_template.pt:48
@@ -59,35 +75,50 @@ msgstr ""
 msgid "current_members_legend"
 msgstr ""
 
+#. Default: "Put here a list of groups that can't be managed by users"
+#: ../interfaces.py:35
+msgid "help_gm_never_managed_groups"
+msgstr ""
+
+#. Default: "Configure which users or groups can manage which groups.\nFill the field below by providing a set of \"user_foo_id|group_bar_id\" (or \"group_foo_id|group_bar_id\"), one per line.\nThat means: the user/group on the left of the \"|\" can handle group on the right."
+#: ../interfaces.py:19
+msgid "help_sgm_data"
+msgstr ""
+
+#. Default: "Configure groups management proxy"
+#: ../browser/controlpanel.py:26
+msgid "help_sgm_settings_editform"
+msgstr ""
+
 #. Default: "Add more members"
 #: ../browser/manage_group_template.pt:72
 msgid "sgm_add_members"
-msgstr "Ajouter utilisateur"
+msgstr ""
 
 #. Default: "Add a new portal member"
 #: ../browser/manage_group_template.pt:149
 msgid "sgm_add_new_portal_member"
-msgstr "Ajouter un nouveau utilisateur au site"
+msgstr ""
 
 #. Default: "Add a new user"
 #: ../browser/manage_group_template.pt:152
 msgid "sgm_add_new_user"
-msgstr "Ajouter un nouveau utilisateur"
+msgstr ""
 
 #. Default: "Members in the group"
 #: ../browser/manage_group_template.pt:40
 msgid "sgm_group_members"
-msgstr "Utilisateurs du groupe"
+msgstr ""
 
 #. Default: "Back to groups management"
 #: ../browser/manage_group_template.pt:29
 msgid "sgm_label_back_to_gm"
-msgstr "Retourner à la Gestion des groupes"
+msgstr ""
 
 #. Default: "No members"
 #: ../browser/manage_group_template.pt:70
 msgid "sgm_no_members"
-msgstr "Aucun utilisateur"
+msgstr ""
 
 #. Default: "No members found"
 #: ../browser/manage_group_template.pt:144
@@ -97,20 +128,20 @@ msgstr ""
 #. Default: "Available groups"
 #: ../browser/simple_groups_management.pt:30
 msgid "smg_manageable_groups_title"
-msgstr "Groupes disponibles"
+msgstr ""
 
 #. Default: "You can't manage any groups"
 #: ../browser/simple_groups_management.pt:45
 msgid "smg_no_groups"
-msgstr "Aucun groupe peut être administré"
+msgstr ""
 
 #. Default: "From this page you can manage some groups of the portal, adding and removing users from them."
 #: ../browser/simple_groups_management.pt:26
 msgid "smg_panelhelp"
-msgstr "Dès cette page, on peut administrer quelques groupes du site, en y ajoutant et en y supprimant utilisateurs"
+msgstr ""
 
 #. Default: "Groups management"
 #: ../browser/simple_groups_management.pt:21
 msgid "smg_paneltitle"
-msgstr "Gestion des groupes"
+msgstr ""
 

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.4.2.dev0'
+version = '0.5.0.dev0'
 
 setup(name='Products.SimpleGroupsManagement',
       version=version,
@@ -15,6 +15,7 @@ setup(name='Products.SimpleGroupsManagement',
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Framework :: Plone :: 4.3",
+        "Framework :: Plone :: 5.0",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
         "Development Status :: 5 - Production/Stable",
@@ -30,7 +31,8 @@ setup(name='Products.SimpleGroupsManagement',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Products.CMFPlone',
+          'plone.api',
       ],
       entry_points="""
       # -*- Entry points: -*-

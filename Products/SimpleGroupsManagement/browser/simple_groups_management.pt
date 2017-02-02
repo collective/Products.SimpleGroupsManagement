@@ -36,7 +36,7 @@
 			<dd tal:define="group_id group/id;
 			                group_obj python:view.load_group(group_id=group_id)">
 				<img width="16" height="16" alt=""
-				     tal:attributes="src string:${context/absolute_url}/group.gif"/>
+				     tal:attributes="src string:${context/absolute_url}/group.png"/>
 				<a tal:attributes="href string:${context/absolute_url}/@@simple_groups_management?group_id=${group_id}"
 				   tal:content="string:${group_obj/getGroupTitleOrName} (${group_id})" />
 			</dd>

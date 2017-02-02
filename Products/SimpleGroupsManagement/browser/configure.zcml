@@ -4,9 +4,9 @@
    i18n_domain="Products.SimpleGroupsManagement">
 
     <browser:resource
-        name="groupevent.png"
-        file="groupevent.png"
-        />
+      name="groupevent.png"
+      file="groupevent.png"
+      />
 
     <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -14,7 +14,15 @@
       class=".simple_groups_management.SimpleGroupsManagement"
       permission="simple_groups_management.UseSimpleGroupsManagement"
       allowed_attributes="add delete check_groups_management_permission"
-	  layer="..interfaces.ISimpleGroupManagementLayer"
+	   layer="..interfaces.ISimpleGroupManagementLayer"
       />
+
+    <browser:page
+      name="configure-simple-groups-management"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.SGMSettingsControlPanel"
+      permission="simple_groups_management.ManageSimpleGroupsManagement"
+	   layer="..interfaces.ISimpleGroupManagementLayer"
+/>
 
 </configure>

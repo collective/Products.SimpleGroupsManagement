@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-try:
-    from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
-except ImportError:
-    from Products.PlonePAS.permissions import ManageGroups
+from Products.Five.browser import BrowserView
+from Products.PlonePAS.permissions import ManageGroups
+from plone import api
+from ..interfaces import ISimpleGroupManagementSettings
+
 
 class CheckSimpleGroupsManagement(BrowserView):
     """View for check if an user can manage some groups"""
@@ -14,24 +14,26 @@ class CheckSimpleGroupsManagement(BrowserView):
         BrowserView.__init__(self, context, request)
         portal_properties = getToolByName(context, 'portal_properties')
         self.acl_users = getToolByName(context, 'acl_users')
-        self.sgm_data = portal_properties['simple_groups_management_properties'].sgm_data
-        self.never_used_groups = portal_properties['simple_groups_management_properties'].sgm_never_managed_groups
-        
+        self.sgm_data = api.portal.get_registry_record(
+            'sgm_data', interface=ISimpleGroupManagementSettings
+        )
+
     def __call__(self):
-        """Check the simple_groups_management_properties property sheets and find if the user can manage some groups
+        """Check the SGM settings and find if the user can manage some groups
         """
         context = self.context
-        member = getToolByName(context, 'portal_membership').getAuthenticatedMember()
+        member = getToolByName(
+            context, 'portal_membership').getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
             return True
 
         my_groups = member.getGroups()
         for line in self.sgm_data:
             line = line.strip()
-            if line.find("|")==-1:
+            if line.find("|") == -1:
                 continue
             id, group_id = line.split("|")
-            if id==member.getId() or id in my_groups:
+            if id == member.getId() or id in my_groups:
                 group = self.acl_users.getGroup(group_id)
                 if group:
                     return True
