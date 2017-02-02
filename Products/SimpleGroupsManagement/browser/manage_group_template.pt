@@ -128,7 +128,7 @@
                     <td>
                         <img width="16" height="16" alt=""
                              tal:attributes="src string:${context/absolute_url}/user.png"/>
-                        <span tal:define="fullname member/title|nothing;
+                        <span tal:define="fullname python:member.getProperty('fullname');
 						                  member_id member/id;"
                               tal:replace="python:(fullname or member_id) + (fullname and ' (' + member_id + ')' or '')" />
                     </td>

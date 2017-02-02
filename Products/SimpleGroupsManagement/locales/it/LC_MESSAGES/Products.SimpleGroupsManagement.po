@@ -66,7 +66,7 @@ msgstr "Utente"
 #. Default: "Add new members to that group"
 #: ../browser/manage_group_template.pt:79
 msgid "add_members_legend"
-msgstr "Aggiunti utenti a questo gruppo"
+msgstr "Aggiungi utenti a questo gruppo"
 
 #. Default: "Select which member(s) you want to add to the group"
 #: ../browser/manage_group_template.pt:117
