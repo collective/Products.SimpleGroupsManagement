@@ -9,7 +9,7 @@ Even playing with this permission is impossible to limit the group on which a me
 This product adds a minimal configuration, a member of the site (or all members in a group) will be able to manage which users are part of a group.
 
 You only need to go to the "*Groups management proxy settings*" settings panel.
-You need to insert a set of strings like
+You need to insert a set of strings like...
 
 ::
 
@@ -17,8 +17,10 @@ You need to insert a set of strings like
     id2|group_id2
     ...
 
-where *id1*, *id2* can be user or group ids.
+...where *id1*, *id2* can be user or group ids.
 This mean that those subjects will be able to act on groups.
+
+Members able to manage groups can also perform bulk upload of members by loading a simple text file.
 
 The utility also react to the **Add portal members** permission. If the current user has this permission you will be able to add new portal members (so no security break for this).
 

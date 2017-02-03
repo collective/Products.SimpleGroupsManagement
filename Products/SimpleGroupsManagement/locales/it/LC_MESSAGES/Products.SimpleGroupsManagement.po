@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-02-02 13:24+0000\n"
+"POT-Creation-Date: 2017-02-03 09:02+0000\n"
 "PO-Revision-Date: 2009-08-02 15:09+0000\n"
 "Last-Translator: Luca Fabbri <luca@keul.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Domain: Products.SimpleGroupsManagement\n"
 
 #. Default: "Add selected"
-#: ../browser/manage_group_template.pt:138
+#: ../browser/manage_group_template.pt:124
 msgid "Add selected"
-msgstr "Aggiunti selezionati"
+msgstr "Aggiungi selezionati"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:36
 msgid "Changes saved"
 msgstr "Modifiche salvate"
 
@@ -30,7 +30,7 @@ msgstr "Modifiche salvate"
 msgid "Delete selected"
 msgstr "Elimina selezionati"
 
-#: ../browser/controlpanel.py:46
+#: ../browser/controlpanel.py:44
 msgid "Edit cancelled"
 msgstr "Modifiche annullate"
 
@@ -38,7 +38,7 @@ msgstr "Modifiche annullate"
 msgid "Groups management proxy"
 msgstr "Delega di gestione gruppi"
 
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:23
 #: ../profiles/plone4/controlpanel.xml
 #: ../profiles/plone5/controlpanel.xml
 msgid "Groups management proxy settings"
@@ -47,11 +47,11 @@ msgstr "Impostazioni delega gestione gruppi"
 msgid "Let normal site members be able to manage groups"
 msgstr "Rende comuni utenti del sito in grado di gestire i gruppi"
 
-#: ../browser/simple_groups_management.py:45
+#: ../browser/simple_groups_management.py:46
 msgid "Member(s) added"
 msgstr "Utente(i) aggiunto"
 
-#: ../browser/simple_groups_management.py:43
+#: ../browser/simple_groups_management.py:44
 msgid "Member(s) removed"
 msgstr "Utente(i) rimosso"
 
@@ -59,17 +59,21 @@ msgstr "Utente(i) rimosso"
 msgid "Not manageable groups"
 msgstr "Gruppi non gestibili"
 
+#: ../browser/manage_group_template.pt:92
+msgid "Upload"
+msgstr "Carica"
+
 #: ../browser/manage_group_template.pt:48
 msgid "User"
 msgstr "Utente"
 
-#. Default: "Add new members to that group"
-#: ../browser/manage_group_template.pt:79
+#. Default: "Search for new members to be added"
+#: ../browser/manage_group_template.pt:77
 msgid "add_members_legend"
-msgstr "Aggiungi utenti a questo gruppo"
+msgstr "Cerca nuovi utenti da aggiungere"
 
 #. Default: "Select which member(s) you want to add to the group"
-#: ../browser/manage_group_template.pt:117
+#: ../browser/manage_group_template.pt:103
 msgid "add_selected_member_legend"
 msgstr "Seleziona quale utente(i) vuoi aggiungere al gruppo"
 
@@ -92,9 +96,14 @@ msgstr ""
 "Questo significa: l'utente/gruppo alla sinistra del \"|\" può gestire il gruppo sulla destra."
 
 #. Default: "Configure groups management proxy"
-#: ../browser/controlpanel.py:26
+#: ../browser/controlpanel.py:24
 msgid "help_sgm_settings_editform"
 msgstr "Configurazione delega di gestione gruppi"
+
+#. Default: "Upload a list of new members"
+#: ../browser/manage_group_template.pt:85
+msgid "mass_add_members_legend"
+msgstr "Carica una lista di nuovi membri"
 
 #. Default: "Add more members"
 #: ../browser/manage_group_template.pt:72
@@ -102,14 +111,14 @@ msgid "sgm_add_members"
 msgstr "Aggiungi altri membri"
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:149
+#: ../browser/manage_group_template.pt:135
 msgid "sgm_add_new_portal_member"
 msgstr "Aggiungi nuovi membri del portale"
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:152
+#: ../browser/manage_group_template.pt:138
 msgid "sgm_add_new_user"
-msgstr "Aggiunge nuovo utente"
+msgstr "Aggiungi nuovo utente"
 
 #. Default: "Members in the group"
 #: ../browser/manage_group_template.pt:40
@@ -127,7 +136,7 @@ msgid "sgm_no_members"
 msgstr "Nessun membro"
 
 #. Default: "No members found"
-#: ../browser/manage_group_template.pt:144
+#: ../browser/manage_group_template.pt:130
 msgid "sgm_no_members_found"
 msgstr "Nessun utente trovato"
 
@@ -150,3 +159,9 @@ msgstr "Da questa pagina puoi gestire gruppi del portale, aggiungendo e rimuoven
 #: ../browser/simple_groups_management.pt:21
 msgid "smg_paneltitle"
 msgstr "Gestione dei gruppi"
+
+#. Default: "Submitted file must be a simple text file with a list of portal members (one per line)."
+#: ../browser/manage_group_template.pt:88
+msgid "upload_field_help"
+msgstr "Il file caricato deve essere un semplice file di testo con una lista di utenti del portale (uno per riga)."
+

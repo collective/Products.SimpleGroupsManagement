@@ -37,6 +37,8 @@ class SimpleGroupsManagement(BrowserView):
 
     def __call__(self):
         request = self.request
+        if request.form.get('form.button.Upload'):
+            self._bulk_upload()
         plone_utils = getToolByName(self.context, 'plone_utils')
         if request.get('deleted'):
             plone_utils.addPortalMessage(_('Member(s) removed'))
@@ -198,12 +200,12 @@ class SimpleGroupsManagement(BrowserView):
             self.context.absolute_url() +
             '/@@simple_groups_management?group_id=%s&deleted=1' % group_id)
 
-    def add(self):
-        """Add users from the group"""
+    def add(self, user_ids=None):
+        """Add users to the group"""
         group_id = self.request.get("group_id")
         if group_id not in self.manageableGroupIds():
             raise Unauthorized()
-        user_ids = self.request.get("user_id")
+        user_ids = user_ids or self.request.get("user_id")
         group = self.acl_users.getGroup(group_id)
         for user_id in user_ids:
             group.addMember(user_id)
@@ -211,3 +213,9 @@ class SimpleGroupsManagement(BrowserView):
         self.request.response.redirect(
             self.context.absolute_url() +
             '/@@simple_groups_management?group_id=%s&added=1' % group_id)
+
+    def _bulk_upload(self):
+        """Bulk upload users from file"""
+        source = self.request.get('members_list').read()
+        members_ids = [l.strip() for l in source.splitlines() if l]
+        self.add(user_ids=members_ids)

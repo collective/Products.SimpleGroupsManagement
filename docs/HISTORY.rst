@@ -4,7 +4,8 @@ Changelog
 0.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- New feature: mass add members providing a file
+  [keul]
 
 
 0.5.0 (2017-02-02)

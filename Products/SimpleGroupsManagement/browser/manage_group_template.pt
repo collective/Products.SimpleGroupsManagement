@@ -70,45 +70,31 @@
     <p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
 
     <h2 i18n:translate="sgm_add_members">Add more members</h2>
-    <div class="memberSearchForm">
-        <form action=""
-              name="member_search"
-              method="post"
-              tal:attributes="action string:$portal_url/@@simple_groups_management">
-              <fieldset>
-              <legend i18n:translate="add_members_legend">Add new members to that group</legend>
-
-              <input type="hidden" name="form.submitted" value="1" />
-              <input type="hidden" name="group_id" value="1"
-                     tal:attributes="value request/group_id|nothing"/>
-
-              <div i18n:domain="plone" class="searchMembersForm">
-                    <div class="field searchFieldLeft">
-                        <input class="quickSearch"
-                           type="text"
-                           name="searchstring"
-                           value=""
-                           tal:attributes="value request/searchstring|nothing"
-                           />
+    <form action="" method="post" tal:attributes="action string:$portal_url/@@simple_groups_management"
+          enctype="multipart/form-data">
+        <div class="memberSearchForm pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
+            <fieldset>
+                <legend i18n:translate="add_members_legend">Search for new members to be added</legend>
+                <div class="field">
+                    <input type="text" name="searchstring" value="" tal:attributes="value request/searchstring|nothing"/>
+                </div>
+                <input i18n:domain="plone" type="submit" class="searchButton" name="form.button.Search" value="Search" i18n:attributes="value label_search;"/>
+                <input i18n:domain="plone" type="submit" class="searchButton" name="form.button.FindAll" value="Show all" i18n:attributes="value label_showall;" tal:condition="not:view/many_users"/>
+            </fieldset>
+            <fieldset>
+                <legend i18n:translate="mass_add_members_legend">Upload a list of new members</legend>
+                <div class="field">
+                    <input type="file" name="members_list" />
+                    <div class="formHelp" i18n:translate="upload_field_help">
+                        Submitted file must be a simple text file with a list of portal members (one per line).
                     </div>
-                    <input type="submit"
-                           class="searchButton"
-                           name="form.button.Search"
-                           value="Search"
-                           i18n:attributes="value label_search;"
-                           />
-
-                    <input type="submit"
-                           class="searchButton"
-                           name="form.button.FindAll"
-                           value="Show all"
-                           i18n:attributes="value label_showall;"
-                           tal:condition="not:view/many_users"
-                           />
-              </div>
-              </fieldset>
-        </form>
-    </div>
+                </div>
+                <input type="submit" class="upload" name="form.button.Upload" value="Upload" i18n:attributes="value"/>
+            </fieldset>
+        </div>
+        <input type="hidden" name="form.submitted" value="1"/>
+        <input type="hidden" name="group_id" value="1" tal:attributes="value request/group_id|nothing"/>
+    </form>
 
     <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management/add"
           tal:condition="portal_members"

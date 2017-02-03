@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-02-02 13:24+0000\n"
+"POT-Creation-Date: 2017-02-03 09:02+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Pallàs <albert.pt@gmail.com>\n"
 "Language-Team: \n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #. <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
 #. Default: "Add selected"
-#: ../browser/manage_group_template.pt:138
+#: ../browser/manage_group_template.pt:124
 msgid "Add selected"
 msgstr "Añadir seleccionado"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:36
 msgid "Changes saved"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Delete selected"
 msgstr "Eliminar seleccionado"
 
-#: ../browser/controlpanel.py:46
+#: ../browser/controlpanel.py:44
 msgid "Edit cancelled"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Groups management proxy"
 msgstr ""
 
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:23
 #: ../profiles/plone4/controlpanel.xml
 #: ../profiles/plone5/controlpanel.xml
 msgid "Groups management proxy settings"
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Let normal site members be able to manage groups"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:45
+#: ../browser/simple_groups_management.py:46
 msgid "Member(s) added"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:43
+#: ../browser/simple_groups_management.py:44
 msgid "Member(s) removed"
 msgstr ""
 
@@ -62,17 +62,21 @@ msgstr ""
 msgid "Not manageable groups"
 msgstr ""
 
+#: ../browser/manage_group_template.pt:92
+msgid "Upload"
+msgstr ""
+
 #: ../browser/manage_group_template.pt:48
 msgid "User"
 msgstr ""
 
-#. Default: "Add new members to that group"
-#: ../browser/manage_group_template.pt:79
+#. Default: "Search for new members to be added"
+#: ../browser/manage_group_template.pt:77
 msgid "add_members_legend"
 msgstr ""
 
 #. Default: "Select which member(s) you want to add to the group"
-#: ../browser/manage_group_template.pt:117
+#: ../browser/manage_group_template.pt:103
 msgid "add_selected_member_legend"
 msgstr ""
 
@@ -92,8 +96,13 @@ msgid "help_sgm_data"
 msgstr ""
 
 #. Default: "Configure groups management proxy"
-#: ../browser/controlpanel.py:26
+#: ../browser/controlpanel.py:24
 msgid "help_sgm_settings_editform"
+msgstr ""
+
+#. Default: "Upload a list of new members"
+#: ../browser/manage_group_template.pt:85
+msgid "mass_add_members_legend"
 msgstr ""
 
 #. Default: "Add more members"
@@ -102,12 +111,12 @@ msgid "sgm_add_members"
 msgstr "Añadir más miembros"
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:149
+#: ../browser/manage_group_template.pt:135
 msgid "sgm_add_new_portal_member"
 msgstr "Añadir un nuevo miembro al portal"
 
 #. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:152
+#: ../browser/manage_group_template.pt:138
 msgid "sgm_add_new_user"
 msgstr "Añadir un nuevo usuario"
 
@@ -127,7 +136,7 @@ msgid "sgm_no_members"
 msgstr "Sin miembros"
 
 #. Default: "No members found"
-#: ../browser/manage_group_template.pt:144
+#: ../browser/manage_group_template.pt:130
 msgid "sgm_no_members_found"
 msgstr ""
 
@@ -150,4 +159,9 @@ msgstr "Desde esta página se pueden administrar algunos grupos del portal, aña
 #: ../browser/simple_groups_management.pt:21
 msgid "smg_paneltitle"
 msgstr "Gestión de grupos"
+
+#. Default: "Submitted file must be a simple text file with a list of portal members (one per line)."
+#: ../browser/manage_group_template.pt:88
+msgid "upload_field_help"
+msgstr ""
 
