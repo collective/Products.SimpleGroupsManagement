@@ -70,19 +70,22 @@
     <p tal:condition="not:members" i18n:translate="sgm_no_members">No members</p>
 
     <h2 i18n:translate="sgm_add_members">Add more members</h2>
-    <form action="" method="post" tal:attributes="action string:$portal_url/@@simple_groups_management"
-          enctype="multipart/form-data">
-        <div class="memberSearchForm pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;">
-            <fieldset>
-                <legend i18n:translate="add_members_legend">Search for new members to be added</legend>
+    <form action="" method="post" class="enableFormTabbing" enctype="multipart/form-data"
+          tal:attributes="action string:$portal_url/@@simple_groups_management">
+        <div class="memberSearchForm pat-autotoc autotabs" data-pat-autotoc="section:fieldset;levels:legend;"
+             tal:omit-tag="not:view/mockup_available">
+            <fieldset id="fieldset-search">
+                <legend i18n:translate="add_members_legend"
+                        id="fieldsetlegend-search">Search for new members to be added</legend>
                 <div class="field">
                     <input type="text" name="searchstring" value="" tal:attributes="value request/searchstring|nothing"/>
                 </div>
                 <input i18n:domain="plone" type="submit" class="searchButton" name="form.button.Search" value="Search" i18n:attributes="value label_search;"/>
                 <input i18n:domain="plone" type="submit" class="searchButton" name="form.button.FindAll" value="Show all" i18n:attributes="value label_showall;" tal:condition="not:view/many_users"/>
             </fieldset>
-            <fieldset>
-                <legend i18n:translate="mass_add_members_legend">Upload a list of new members</legend>
+            <fieldset id="fieldset-upload">
+                <legend i18n:translate="mass_add_members_legend"
+                        id="fieldsetlegend-upload">Upload a list of new members</legend>
                 <div class="field">
                     <input type="file" name="members_list" />
                     <div class="formHelp" i18n:translate="upload_field_help">
@@ -101,30 +104,30 @@
           tal:define="batch python:Batch(portal_members, b_size, int(b_start), orphan=1);">
         <fieldset>
         <legend i18n:translate="add_selected_member_legend">Select which member(s) you want to add to the group</legend>
-        <input name="group_id" tal:attributes="value group/getId" type="hidden" />
+            <input name="group_id" tal:attributes="value group/getId" type="hidden" />
 
-        <table class="listing">
-            <tr><th></th><th i18n:translate="">User</th></tr>
-            <tal:rows repeat="member batch">
-                <tr tal:define="oddrow repeat/member/odd"
-                    tal:attributes="class python:(oddrow and 'odd') or 'even'">
-                    <td><input class="noborder notify"
-                               type="checkbox" name="user_id:list"
-                               tal:attributes="value member/id" /></td>
-                    <td>
-                        <img width="16" height="16" alt=""
-                             tal:attributes="src string:${context/absolute_url}/user.png"/>
-                        <span tal:define="fullname python:member.getProperty('fullname');
-						                  member_id member/id;"
-                              tal:replace="python:(fullname or member_id) + (fullname and ' (' + member_id + ')' or '')" />
-                    </td>
-                </tr>
-            </tal:rows>
-        </table>
-        <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
-               tal:condition="portal_members"/>
-        <div metal:use-macro="here/batch_macros/macros/navigation" />
-    </fieldset>
+            <table class="listing">
+                <tr><th></th><th i18n:translate="">User</th></tr>
+                <tal:rows repeat="member batch">
+                    <tr tal:define="oddrow repeat/member/odd"
+                        tal:attributes="class python:(oddrow and 'odd') or 'even'">
+                        <td><input class="noborder notify"
+                                   type="checkbox" name="user_id:list"
+                                   tal:attributes="value member/id" /></td>
+                        <td>
+                            <img width="16" height="16" alt=""
+                                 tal:attributes="src string:${context/absolute_url}/user.png"/>
+                            <span tal:define="fullname python:member.getProperty('fullname');
+    						                  member_id member/id;"
+                                  tal:replace="python:(fullname or member_id) + (fullname and ' (' + member_id + ')' or '')" />
+                        </td>
+                    </tr>
+                </tal:rows>
+            </table>
+            <input class="context" i18n:attributes="value" type="submit" name="add_members" value="Add selected"
+                   tal:condition="portal_members"/>
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+        </fieldset>
     </form>
 
     <p tal:condition="python:not portal_members and request.form.get('form.submitted','')"

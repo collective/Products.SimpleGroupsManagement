@@ -18,6 +18,12 @@ from zope.component import getMultiAdapter
 from zope.event import notify
 from ..interfaces import ISimpleGroupManagementSettings
 
+try:
+    import mockup
+    MOCKUP_AVAILABLE = True
+except ImportError:
+    MOCKUP_AVAILABLE = False
+
 
 class SimpleGroupsManagement(BrowserView):
     """Main view for manage groups in the Plone portal"""
@@ -219,3 +225,7 @@ class SimpleGroupsManagement(BrowserView):
         source = self.request.get('members_list').read()
         members_ids = [l.strip() for l in source.splitlines() if l]
         self.add(user_ids=members_ids)
+
+    @property
+    def mockup_available(self):
+        return MOCKUP_AVAILABLE
