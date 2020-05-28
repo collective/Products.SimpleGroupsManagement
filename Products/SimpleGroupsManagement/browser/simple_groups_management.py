@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
 from Products.CMFCore import permissions
@@ -11,12 +12,16 @@ from Products.PlonePAS.permissions import ManageGroups
 from Products.SimpleGroupsManagement import messageFactory as _
 from Products.SimpleGroupsManagement.group_event import UserAddedToGroup
 from Products.SimpleGroupsManagement.group_event import UserRemovedFromGroup
+from ZODB.POSException import ConflictError
 from itertools import chain
 from plone import api
 from plone.api.exc import InvalidParameterError
 from zope.component import getMultiAdapter
 from zope.event import notify
 from ..interfaces import ISimpleGroupManagementSettings
+from .. import messageFactory as _
+
+logger = logging.getLogger(__file__)
 
 try:
     import mockup
@@ -44,14 +49,24 @@ class SimpleGroupsManagement(BrowserView):
 
     def __call__(self):
         request = self.request
+        plone_utils = getToolByName(self.context, "plone_utils")
+        group_id = self.request.get("group_id")
         if request.form.get("form.button.Upload"):
             self._bulk_upload()
-        plone_utils = getToolByName(self.context, "plone_utils")
+        if request.form.get("form.button.AddUser"):
+            errors = self._add_new_user()
+            if errors:
+                plone_utils.addPortalMessage(_("Cannot create user"), "error")
+                return self.manage_group_template(errors=errors)
+            self.request.response.redirect(
+                self.context.absolute_url()
+                + "/@@simple_groups_management?group_id=%s" % group_id
+            )
         if request.get("deleted"):
             plone_utils.addPortalMessage(_("Member(s) removed"))
         elif request.get("added"):
             plone_utils.addPortalMessage(_(u"Member(s) added"))
-        if self.request.get("group_id"):
+        if group_id:
             return self.manage_group_template()
         return self.main_template()
 
@@ -232,6 +247,80 @@ class SimpleGroupsManagement(BrowserView):
         source = self.request.get("members_list").read()
         members_ids = [l.strip() for l in source.splitlines() if l]
         self.add(user_ids=members_ids)
+
+    def _add_new_user(self):
+        if not self.can_addusers():
+            raise Unauthorized("Creating new user is not allowed")
+        group_id = self.request.get("group_id")
+        if group_id not in self.manageableGroupIds():
+            raise Unauthorized("Managing group is not allowed")
+
+        form = self.request.form
+        send_reset_email = form.get("send_reset_email")
+        username = form.get("username")
+        # Check for password that do not match
+        if (
+            form.get("password")
+            and form.get("password2")
+            and form.get("password") != form.get("password2")
+        ):
+            return {
+                "password": _(u"Passwords do not match"),
+            }
+        # Check for user already there
+        user = api.user.get(username=username)
+        if user:
+            return {
+                "username": _(u"User already existing"),
+            }
+        regtool = api.portal.get_tool("portal_registration")
+        # Check for valid userid
+        if not regtool.isMemberIdAllowed(username):
+            return {
+                "username": _(u"Username not allowed"),
+            }
+        # Check for valid email
+        if not regtool.isValidEmail(form.get("email")):
+            return {
+                "email": _(u"Invalid email address"),
+            }
+        # User creation
+        try:
+            api.user.create(
+                username=username,
+                email=form.get("email"),
+                password=form.get("password") or None,
+                properties={"fullname": form.get("fullname")}
+                if form.get("fullname")
+                else None,
+            )
+        except ConflictError:
+            raise
+        except Exception as e:
+            api.portal.show_message(
+                message=e.args[0], request=self.request, type="error"
+            )
+            return {}
+        if form.get("send_reset_email"):
+            # reset_tool = api.portal.get_tool("portal_password_reset")
+            try:
+                regtool.mailPassword(username, self.request)
+            except ValueError as e:
+                api.portal.show_message(
+                    message=_(
+                        "reset_email_error",
+                        default="Not able to send reset password message",
+                    ),
+                    request=self.request,
+                    type="warning",
+                )
+                log.exception("Not able to send reset password message")
+        # Adding user to the group
+        api.group.add_user(groupname=group_id, username=username)
+        api.portal.show_message(
+            message=_("New user has been created"), request=self.request, type="info",
+        )
+        return {}
 
     @property
     def mockup_available(self):

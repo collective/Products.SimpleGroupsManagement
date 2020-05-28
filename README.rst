@@ -22,7 +22,8 @@ That mean: what is on the left can manage on group on the right.
 
 Members able to manage groups can also perform bulk upload of members by loading a simple text file.
 
-The utility also react to the **Add portal members** permission. If the current user has this permission you will be able to add new portal members (so no security break for this).
+The utility also react to the **Add portal member** permission.
+If the current user has this permission he will be able to add blend new portal members to the group.
 
 When an user is added or removed, an event is notified.
 

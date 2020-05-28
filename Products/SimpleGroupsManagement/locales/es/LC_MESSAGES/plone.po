@@ -23,4 +23,3 @@ msgstr "Gestiòn de grupos"
 
 msgid "Let normal site members be able to manage groups"
 msgstr ""
-
