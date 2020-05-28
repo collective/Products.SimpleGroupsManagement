@@ -12,17 +12,16 @@ class CheckSimpleGroupsManagement(BrowserView):
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
-        self.acl_users = getToolByName(context, 'acl_users')
+        self.acl_users = getToolByName(context, "acl_users")
         self.sgm_data = api.portal.get_registry_record(
-            'sgm_data', interface=ISimpleGroupManagementSettings
+            "sgm_data", interface=ISimpleGroupManagementSettings
         )
 
     def __call__(self):
         """Check the SGM settings and find if the user can manage some groups
         """
         context = self.context
-        member = getToolByName(
-            context, 'portal_membership').getAuthenticatedMember()
+        member = getToolByName(context, "portal_membership").getAuthenticatedMember()
         if member.has_permission(ManageGroups, context):
             return True
 
