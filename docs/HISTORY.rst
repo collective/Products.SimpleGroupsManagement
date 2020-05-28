@@ -1,10 +1,12 @@
 Changelog
 =========
 
-0.6.1 (unreleased)
+0.7.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Changes to Python 3 and Plone 5.2.
+  Plone 4 should work too. Plone 3 is probably gone forever.
+  [keul]
 
 
 0.6.0 (2017-02-03)
