@@ -1,10 +1,18 @@
 Changelog
 =========
 
-0.6.1 (unreleased)
+0.7.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Changes for Plone 5.2 and Python 3 compatibility.
+  Plone 4 should work too, but untested.
+  [keul]
+- The "Add new user" feature was not working on Plone 5.
+  Now it's not based on standard Plone feature anymore due to changes in Plone 5:
+  seems that "Add portal member" permission is not used, while the new "Plone Site Setup: Users and Groups" is too powerful.
+
+  So: a new inline form for creating user is provided (very sloppy implementation, but the whole package is Plone 2.5 style, so...).
+  [keul]
 
 
 0.6.0 (2017-02-03)
@@ -25,7 +33,7 @@ Plone 5 compatibility
   [keul]
 - Fixed form GET to POST
   [keul]
-- Fixed an issue that allow user management for groups with similar names
+- Fixed an issue that was allowing user management for groups with similar names
   [keul]
 - Update load user code as Plone controlpanel do; this fix LDAP integration issue
   [keul]

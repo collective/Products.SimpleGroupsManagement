@@ -14,7 +14,7 @@
       class=".simple_groups_management.SimpleGroupsManagement"
       permission="simple_groups_management.UseSimpleGroupsManagement"
       allowed_attributes="add delete check_groups_management_permission"
-	   layer="..interfaces.ISimpleGroupManagementLayer"
+	    layer="..interfaces.ISimpleGroupManagementLayer"
       />
 
     <browser:page
@@ -22,7 +22,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".controlpanel.SGMSettingsControlPanel"
       permission="simple_groups_management.ManageSimpleGroupsManagement"
-	   layer="..interfaces.ISimpleGroupManagementLayer"
+	    layer="..interfaces.ISimpleGroupManagementLayer"
 />
 
 </configure>

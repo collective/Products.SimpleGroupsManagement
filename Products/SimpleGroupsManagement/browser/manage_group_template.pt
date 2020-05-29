@@ -135,13 +135,58 @@
 
     <div id="useradd"
          tal:condition="view/can_addusers">
-        <h2 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h2>
-        <form method="post" tal:attributes="action string:$portal_url/@@new-user">
-            <div>
-            <input type="submit" value="Add a new user" name="form.button.AddUser"
+        <h3 i18n:translate="sgm_add_new_portal_member">Add a new portal member</h3>
+        <form method="post" tal:attributes="action string:$portal_url/@@simple_groups_management"
+              tal:define="errors options/errors|python:{}">
+            <div class="field" tal:attributes="class python:'field error' if errors.get('username') else 'field'">
+                <label for="username" i18n:domain="plone" i18n:translate="">
+                    Username
+                    <span class="required horizontal" title="Required">&nbsp;</span>
+                </label>
+                <div class="fieldErrorBox" tal:condition="errors/username|nothing">
+                    <div class="error" i18n:translate="" tal:content="errors/username">Error</div>
+                </div>
+                <input type="text" id="username" name="username" tal:attributes="value request/username|nothing" />
+            </div>
+            <div class="field">
+                <label for="username" i18n:domain="plone" i18n:translate="">Fullname</label>
+                <input type="text" id="fullname" name="fullname" tal:attributes="value request/fullname|nothing" />
+            </div>
+            <div class="field" tal:attributes="class python:'field error' if errors.get('email') else 'field'">
+                <label for="email" i18n:domain="plone" i18n:translate="">
+                    Email
+                    <span class="required horizontal" title="Required">&nbsp;</span>
+                </label>
+                <div class="fieldErrorBox" tal:condition="errors/email|nothing">
+                    <div class="error" i18n:translate="" tal:content="errors/email">Error</div>
+                </div>
+                <input type="text" id="email" name="email" tal:attributes="value request/email|nothing" />
+            </div>
+            <div class="field" tal:attributes="class python:'field error' if errors.get('password') else 'field'">
+                <label for="password" i18n:domain="plone" i18n:translate="">
+                    Password
+                    <span class="formHelp" i18n:translate="leave_blank_pwd_message">
+                        Leave blank to not set any password (user reset password will be required).
+                    </span>
+                </label>
+                <div class="fieldErrorBox" tal:condition="errors/password|nothing">
+                    <div class="error" i18n:translate="" tal:content="errors/password">Error</div>
+                </div>
+                <input type="password" id="password" name="password" />
+            </div>
+            <div class="field">
+                <label for="password2" i18n:translate="">Repeat password</label>
+                <input type="password" id="password2" name="password2" />
+            </div>
+            <div class="field">
+                <input type="checkbox" id="send_reset_email" name="send_reset_email:boolean" checked="checked" />
+                <label for="send_reset_email" i18n:translate="">Send reset password email</label>
+            </div>
+            <input type="hidden" name="group_id" tal:attributes="value request/group_id|nothing" />
+            <input type="hidden" name="form.button.AddUser" value="1" />
+            <input type="submit" value="Create and add to group"
                    class="standalone add"
                    i18n:attributes="value sgm_add_new_user" />
-            </div>
         </form>
     </div>
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-02-03 09:02+0000\n"
+"POT-Creation-Date: 2020-05-29 11:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: Products.SimpleGroupsManagement\n"
 
-#: ../browser/manage_group_template.pt:124
+#: ../browser/manage_group_template.pt:127
 msgid "Add selected"
 msgstr ""
 
-#: ../browser/controlpanel.py:36
+#: ../browser/simple_groups_management.py:59
+msgid "Cannot create user"
+msgstr ""
+
+#: ../browser/controlpanel.py:39
 msgid "Changes saved"
 msgstr ""
 
@@ -37,28 +41,61 @@ msgstr ""
 msgid "Groups management proxy"
 msgstr ""
 
-#: ../browser/controlpanel.py:23
+#: ../browser/controlpanel.py:26
 #: ../profiles/plone4/controlpanel.xml
 #: ../profiles/plone5/controlpanel.xml
 msgid "Groups management proxy settings"
 msgstr ""
 
+#: ../browser/simple_groups_management.py:285
+msgid "Invalid email address"
+msgstr ""
+
+#: ../configure.zcml:28
 msgid "Let normal site members be able to manage groups"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:46
+#: ../browser/simple_groups_management.py:68
 msgid "Member(s) added"
 msgstr ""
 
-#: ../browser/simple_groups_management.py:44
+#: ../browser/simple_groups_management.py:66
 msgid "Member(s) removed"
+msgstr ""
+
+#: ../browser/simple_groups_management.py:321
+msgid "New user has been created"
 msgstr ""
 
 #: ../interfaces.py:34
 msgid "Not manageable groups"
 msgstr ""
 
-#: ../browser/manage_group_template.pt:92
+#: ../browser/simple_groups_management.py:268
+msgid "Passwords do not match"
+msgstr ""
+
+#: ../configure.zcml:52
+msgid "Remove Simple Groups Management from your site"
+msgstr ""
+
+#: ../browser/manage_group_template.pt:178
+msgid "Repeat password"
+msgstr ""
+
+#: ../browser/manage_group_template.pt:183
+msgid "Send reset password email"
+msgstr ""
+
+#: ../configure.zcml:28
+msgid "Simple Groups Management"
+msgstr ""
+
+#: ../configure.zcml:52
+msgid "Simple Groups Management: uninstall"
+msgstr ""
+
+#: ../browser/manage_group_template.pt:95
 msgid "Upload"
 msgstr ""
 
@@ -66,13 +103,21 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+#: ../browser/simple_groups_management.py:274
+msgid "User already existing"
+msgstr ""
+
+#: ../browser/simple_groups_management.py:280
+msgid "Username not allowed"
+msgstr ""
+
 #. Default: "Search for new members to be added"
-#: ../browser/manage_group_template.pt:77
+#: ../browser/manage_group_template.pt:78
 msgid "add_members_legend"
 msgstr ""
 
 #. Default: "Select which member(s) you want to add to the group"
-#: ../browser/manage_group_template.pt:103
+#: ../browser/manage_group_template.pt:106
 msgid "add_selected_member_legend"
 msgstr ""
 
@@ -92,13 +137,18 @@ msgid "help_sgm_data"
 msgstr ""
 
 #. Default: "Configure groups management proxy"
-#: ../browser/controlpanel.py:24
+#: ../browser/controlpanel.py:27
 msgid "help_sgm_settings_editform"
 msgstr ""
 
 #. Default: "Upload a list of new members"
-#: ../browser/manage_group_template.pt:85
+#: ../browser/manage_group_template.pt:87
 msgid "mass_add_members_legend"
+msgstr ""
+
+#. Default: "Not able to send reset password message"
+#: ../browser/simple_groups_management.py:310
+msgid "reset_email_error"
 msgstr ""
 
 #. Default: "Add more members"
@@ -107,12 +157,12 @@ msgid "sgm_add_members"
 msgstr ""
 
 #. Default: "Add a new portal member"
-#: ../browser/manage_group_template.pt:135
+#: ../browser/manage_group_template.pt:138
 msgid "sgm_add_new_portal_member"
 msgstr ""
 
-#. Default: "Add a new user"
-#: ../browser/manage_group_template.pt:138
+#. Default: "Create and add to group"
+#: ../browser/manage_group_template.pt:187
 msgid "sgm_add_new_user"
 msgstr ""
 
@@ -132,7 +182,7 @@ msgid "sgm_no_members"
 msgstr ""
 
 #. Default: "No members found"
-#: ../browser/manage_group_template.pt:130
+#: ../browser/manage_group_template.pt:133
 msgid "sgm_no_members_found"
 msgstr ""
 
@@ -157,7 +207,6 @@ msgid "smg_paneltitle"
 msgstr ""
 
 #. Default: "Submitted file must be a simple text file with a list of portal members (one per line)."
-#: ../browser/manage_group_template.pt:88
+#: ../browser/manage_group_template.pt:91
 msgid "upload_field_help"
 msgstr ""
-
