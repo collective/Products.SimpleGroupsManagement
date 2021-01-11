@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.7.0 (unreleased)
+0.7.0 (2021-01-11)
 ------------------
 
 - Changes for Plone 5.2 and Python 3 compatibility.
