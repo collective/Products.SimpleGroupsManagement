@@ -4,7 +4,8 @@ Changelog
 0.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add members sort.
+  [ekulos]
 
 
 0.7.0 (2021-01-11)
