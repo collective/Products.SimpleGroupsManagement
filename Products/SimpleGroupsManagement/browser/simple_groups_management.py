@@ -116,7 +116,10 @@ class SimpleGroupsManagement(BrowserView):
     def load_group_members(self, group):
         """Load member from a group"""
         if group:
-            return group.getGroupMembers()
+            users = group.getGroupMembers()
+            users.sort(
+                key=lambda x: normalizeString(x.getProperty('fullname') or ''))
+            return users
         return []
 
     def manageable_groups(self):
