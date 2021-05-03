@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.7.1 (unreleased)
+0.7.1 (2021-05-03)
 ------------------
 
 - Add members sort.
