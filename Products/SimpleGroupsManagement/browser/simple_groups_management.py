@@ -65,7 +65,7 @@ class SimpleGroupsManagement(BrowserView):
         if request.get("deleted"):
             plone_utils.addPortalMessage(_("Member(s) removed"))
         elif request.get("added"):
-            plone_utils.addPortalMessage(_(u"Member(s) added"))
+            plone_utils.addPortalMessage(_("Member(s) added"))
         if group_id:
             return self.manage_group_template()
         return self.main_template()
@@ -117,8 +117,7 @@ class SimpleGroupsManagement(BrowserView):
         """Load member from a group"""
         if group:
             users = group.getGroupMembers()
-            users.sort(
-                key=lambda x: normalizeString(x.getProperty('fullname') or ''))
+            users.sort(key=lambda x: normalizeString(x.getProperty("fullname") or ""))
             return users
         return []
 
@@ -248,7 +247,13 @@ class SimpleGroupsManagement(BrowserView):
     def _bulk_upload(self):
         """Bulk upload users from file"""
         source = self.request.get("members_list").read()
-        members_ids = [l.strip() for l in source.splitlines() if l]
+        members_ids = []
+        for member_id in source.splitlines():
+            member_id = member_id.strip()
+            if member_id:
+                if not isinstance(member_id, str):
+                    member_id = member_id.decode("utf-8")
+                members_ids.append(member_id)
         self.add(user_ids=members_ids)
 
     def _add_new_user(self):
@@ -268,24 +273,24 @@ class SimpleGroupsManagement(BrowserView):
             and form.get("password") != form.get("password2")
         ):
             return {
-                "password": _(u"Passwords do not match"),
+                "password": _("Passwords do not match"),
             }
         # Check for user already there
         user = api.user.get(username=username)
         if user:
             return {
-                "username": _(u"User already existing"),
+                "username": _("User already existing"),
             }
         regtool = api.portal.get_tool("portal_registration")
         # Check for valid userid
         if not regtool.isMemberIdAllowed(username):
             return {
-                "username": _(u"Username not allowed"),
+                "username": _("Username not allowed"),
             }
         # Check for valid email
         if not regtool.isValidEmail(form.get("email")):
             return {
-                "email": _(u"Invalid email address"),
+                "email": _("Invalid email address"),
             }
         # User creation
         try:
@@ -293,9 +298,9 @@ class SimpleGroupsManagement(BrowserView):
                 username=username,
                 email=form.get("email"),
                 password=form.get("password") or None,
-                properties={"fullname": form.get("fullname")}
-                if form.get("fullname")
-                else None,
+                properties=(
+                    {"fullname": form.get("fullname")} if form.get("fullname") else None
+                ),
             )
         except ConflictError:
             raise
@@ -321,7 +326,9 @@ class SimpleGroupsManagement(BrowserView):
         # Adding user to the group
         api.group.add_user(groupname=group_id, username=username)
         api.portal.show_message(
-            message=_("New user has been created"), request=self.request, type="info",
+            message=_("New user has been created"),
+            request=self.request,
+            type="info",
         )
         return {}
 

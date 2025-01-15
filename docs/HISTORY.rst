@@ -4,7 +4,8 @@ Changelog
 0.7.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- In _bulk_upload force convert member_ids in strings (and not bytes).
+  [cekk]
 
 
 0.7.1 (2021-05-03)
